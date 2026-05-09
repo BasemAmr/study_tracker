@@ -208,20 +208,22 @@ class _ProgressRingPainter extends CustomPainter {
 
       // Rotating Shimmer Arc
       final shimmerPaint = Paint()
-        ..color = Colors.white.withOpacity(0.5)
+        ..shader = RadialGradient(
+          colors: [Colors.white.withOpacity(0.9), Colors.white.withOpacity(0.0)],
+        ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
-        ..strokeWidth = strokeWidth - 4;
+        ..strokeWidth = strokeWidth - 6;
 
       final shimmerStartAngle = startAngle + (2 * pi * shimmerValue);
-      const shimmerSweepAngle = 0.5; // Small arc segment
+      const shimmerSweepAngle = 0.25; // Small arc segment
 
       // We only draw the shimmer if it's within the progress area
       // For simplicity, we can draw it and clip it to the progress arc
       canvas.save();
       final clipPath = Path()
         ..addArc(rect, startAngle, sweepAngle);
-      // canvas.clipPath(clipPath); // Optional: if we want it strictly inside progress
+      canvas.clipPath(clipPath); // Clip to progress area
       
       canvas.drawArc(
         rect,

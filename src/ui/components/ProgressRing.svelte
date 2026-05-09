@@ -76,10 +76,10 @@
         cy={size / 2}
         r={radius}
         fill="none"
-        stroke="rgba(255, 255, 255, 0.6)"
+        stroke="rgba(255, 255, 255, 0.75)"
         class="shimmer-arc"
         stroke-width={strokeWidth - 2}
-        stroke-dasharray={`${circumference * 0.1} ${circumference * 0.9}`}
+        stroke-dasharray={`${circumference * 0.15} ${circumference * 0.85}`}
         stroke-linecap="round"
         style={`--circumference: ${circumference}; visibility: ${percentage > 0 ? 'visible' : 'hidden'};`}
       />
@@ -87,7 +87,7 @@
     
     <!-- Inner Fire Glow -->
     <div class="absolute inset-0 pointer-events-none rounded-full flex items-center justify-center">
-       <div class="w-[85%] h-[85%] rounded-full bg-red-400/10 blur-2xl animate-pulse"></div>
+       <div class="w-full h-full rounded-full animate-pulse" style="background: radial-gradient(circle, rgba(239,68,68,0.18) 0%, transparent 70%); filter: blur(8px);"></div>
     </div>
   </div>
   
@@ -98,16 +98,17 @@
 
 <style>
   .progress-ring-stroke {
-    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.5));
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)) drop-shadow(0 0 16px rgba(245, 158, 11, 0.3));
   }
-  
+
   .shimmer-arc {
-    animation: rotate-shimmer 3s infinite linear;
-    transform-origin: center;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: rotate-shimmer 2.5s infinite linear;
   }
 
   @keyframes rotate-shimmer {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: calc(var(--circumference) * -1); }
   }
 </style>
