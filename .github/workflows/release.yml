@@ -36,7 +36,8 @@ jobs:
           targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
       - name: install frontend dependencies
-        run: npm install
+        run: npm ci
+        shell: bash
 
       - uses: tauri-apps/tauri-action@v0
         env:
@@ -57,14 +58,15 @@ jobs:
         with:
           channel: 'stable'
       - name: Install dependencies
-        run: flutter pub get
-        working-directory: study_tracker_flutter
+        run: |
+          cd study_tracker_flutter
+          flutter pub get
       - name: Make gradlew executable
-        run: chmod +x gradlew
-        working-directory: study_tracker_flutter/android
+        run: chmod +x study_tracker_flutter/android/gradlew
       - name: Build APK
-        run: flutter build apk --release
-        working-directory: study_tracker_flutter
+        run: |
+          cd study_tracker_flutter
+          flutter build apk --release
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
