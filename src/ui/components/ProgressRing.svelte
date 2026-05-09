@@ -39,11 +39,11 @@
 
 <div class="inline-flex flex-col items-center gap-2">
   <div class="relative">
-    <svg width={size} height={size} class="-rotate-90 drop-shadow-sm">
+    <svg width={size} height={size} class="-rotate-90 drop-shadow-lg">
       <defs>
         <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#4ADE80" />
-          <stop offset="100%" stop-color="#22C55E" />
+          <stop offset="0%" stop-color="#F59E0B" />
+          <stop offset="100%" stop-color="#EF4444" />
         </linearGradient>
       </defs>
       <!-- Background circle -->
@@ -53,7 +53,7 @@
         r={radius}
         fill="none"
         stroke="currentColor"
-        class="text-ink-100/30"
+        class="text-orange-100/10"
         stroke-width={strokeWidth}
       />
       <!-- Progress arc -->
@@ -63,30 +63,51 @@
         r={radius}
         fill="none"
         stroke="url(#{gradientId})"
-        class="transition-all duration-1000 ease-out progress-ring-stroke"
+        class="transition-all duration-[2000ms] ease-out progress-ring-stroke"
         stroke-width={strokeWidth}
         stroke-dasharray={circumference}
         stroke-dashoffset={offset}
         stroke-linecap="round"
       />
+      
+      <!-- Shimmer Arc Overlay -->
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.6)"
+        class="shimmer-arc"
+        stroke-width={strokeWidth - 2}
+        stroke-dasharray={`${circumference * 0.1} ${circumference * 0.9}`}
+        stroke-linecap="round"
+        style={`--circumference: ${circumference}; visibility: ${percentage > 0 ? 'visible' : 'hidden'};`}
+      />
     </svg>
     
-    <!-- Inner Glisten Effect (Overlay) -->
+    <!-- Inner Fire Glow -->
     <div class="absolute inset-0 pointer-events-none rounded-full flex items-center justify-center">
-       <div class="w-[80%] h-[80%] rounded-full bg-moss-200/5 blur-xl animate-pulse"></div>
+       <div class="w-[85%] h-[85%] rounded-full bg-red-400/10 blur-2xl animate-pulse"></div>
     </div>
   </div>
   
   {#if label}
-    <span class="text-xs font-medium text-moss-600">{label}</span>
+    <span class="text-xs font-semibold text-orange-600 tracking-wide uppercase">{label}</span>
   {/if}
 </div>
 
 <style>
   .progress-ring-stroke {
-    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.4));
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.5));
   }
   
-  /* Adding a subtle rotation/shimmer effect to the gradient via animation if possible, 
-     but standard SVG filters are safer for performance. */
+  .shimmer-arc {
+    animation: rotate-shimmer 3s infinite linear;
+    transform-origin: center;
+  }
+
+  @keyframes rotate-shimmer {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 </style>

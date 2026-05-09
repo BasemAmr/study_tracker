@@ -5,7 +5,7 @@ import '../../../core/theme/typography.dart';
 import '../../../core/widgets/app_card.dart';
 import '../../../l10n/app_localizations.dart';
 
-class DailyProgressRing extends StatelessWidget {
+class DailyProgressRing extends StatefulWidget {
   final int deepWorkMinutes;
   final int dailyGoalMinutes;
 
@@ -16,10 +16,31 @@ class DailyProgressRing extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<DailyProgressRing> createState() => _DailyProgressRingState();
+}
+
+class _DailyProgressRingState extends State<DailyProgressRing> with TickerProviderStateMixin {
+  late final AnimationController _shimmerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _shimmerController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _shimmerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final double progress = (deepWorkMinutes / dailyGoalMinutes).clamp(0.0, 1.0);
-    final int percentage = (progress * 100).toInt();
+    final double targetProgress = (widget.deepWorkMinutes / widget.dailyGoalMinutes).clamp(0.0, 1.0);
     
     return AppCard(
       padding: const EdgeInsets.all(24),
@@ -30,59 +51,91 @@ class DailyProgressRing extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               l10n.dailyObjectiveTitle,
-              style: AppTypography.textTheme.headlineSmall,
+              style: AppTypography.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(height: 32),
-          SizedBox(
-            width: 160,
-            height: 160,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                CustomPaint(
-                  size: const Size(160, 160),
-                  painter: _ProgressRingPainter(
-                    progress: progress,
-                    trackColor: AppColors.surfaceContainerHigh,
-                    progressColor: AppColors.primary,
-                    outlineColor: AppColors.outline,
-                  ),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
+          TweenAnimationBuilder<double>(
+            tween: Tween<double>(begin: 0.0, end: targetProgress),
+            duration: const Duration(milliseconds: 2000), // Slow fill
+            curve: Curves.easeInOutCubic,
+            builder: (context, progress, child) {
+              final int percentage = (progress * 100).toInt();
+              return SizedBox(
+                width: 160,
+                height: 160,
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '$percentage',
-                          style: AppTypography.textTheme.displayMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            height: 1.0,
+                    // Glow background
+                    Container(
+                      width: 140,
+                      height: 140,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFFEF4444).withOpacity(0.15 * (progress > 0 ? 1 : 0)),
+                            blurRadius: 30,
+                            spreadRadius: 5,
                           ),
+                        ],
+                      ),
+                    ),
+                    AnimatedBuilder(
+                      animation: _shimmerController,
+                      builder: (context, _) {
+                        return CustomPaint(
+                          size: const Size(160, 160),
+                          painter: _ProgressRingPainter(
+                            progress: progress,
+                            shimmerValue: _shimmerController.value,
+                            trackColor: const Color(0xFFFFE4E1).withOpacity(0.2),
+                            progressColorStart: const Color(0xFFF59E0B),
+                            progressColorEnd: const Color(0xFFEF4444),
+                          ),
+                        );
+                      }
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '$percentage',
+                              style: AppTypography.textTheme.displayMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                height: 1.0,
+                                color: const Color(0xFF334155),
+                              ),
+                            ),
+                            Text(
+                              '%',
+                              style: AppTypography.textTheme.headlineSmall?.copyWith(
+                                color: const Color(0xFF64748B),
+                                height: 1.2,
+                              ),
+                            ),
+                          ],
                         ),
+                        const SizedBox(height: 4),
                         Text(
-                          '%',
-                          style: AppTypography.textTheme.headlineSmall?.copyWith(
-                            color: AppColors.onSurfaceVariant,
-                            height: 1.2,
+                          l10n.completedLabel,
+                          style: AppTypography.textTheme.labelMedium?.copyWith(
+                            color: const Color(0xFF94A3B8),
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.5,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      l10n.completedLabel,
-                      style: AppTypography.textTheme.labelMedium?.copyWith(
-                        color: AppColors.outline,
-                      ),
-                    ),
                   ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
           const SizedBox(height: 32),
           Row(
@@ -90,12 +143,13 @@ class DailyProgressRing extends StatelessWidget {
             children: [
               Text(
                 l10n.goalLabel,
-                style: AppTypography.textTheme.labelMedium,
+                style: AppTypography.textTheme.labelMedium?.copyWith(color: const Color(0xFF64748B)),
               ),
               Text(
-                '${deepWorkMinutes ~/ 60}h ${deepWorkMinutes % 60}m / ${dailyGoalMinutes ~/ 60}h',
+                '${widget.deepWorkMinutes ~/ 60}h ${widget.deepWorkMinutes % 60}m / ${widget.dailyGoalMinutes ~/ 60}h',
                 style: AppTypography.textTheme.labelMedium?.copyWith(
                   fontWeight: FontWeight.bold,
+                  color: const Color(0xFF334155),
                 ),
               ),
             ],
@@ -108,29 +162,24 @@ class DailyProgressRing extends StatelessWidget {
 
 class _ProgressRingPainter extends CustomPainter {
   final double progress;
+  final double shimmerValue;
   final Color trackColor;
-  final Color progressColor;
-  final Color outlineColor;
+  final Color progressColorStart;
+  final Color progressColorEnd;
 
   _ProgressRingPainter({
     required this.progress,
+    required this.shimmerValue,
     required this.trackColor,
-    required this.progressColor,
-    required this.outlineColor,
+    required this.progressColorStart,
+    required this.progressColorEnd,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
-    final radius = min(size.width / 2, size.height / 2) - 10; // Padding
+    final radius = min(size.width / 2, size.height / 2) - 10;
     const strokeWidth = 16.0;
-
-    // Background track outline
-    final trackOutlinePaint = Paint()
-      ..color = outlineColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth + 4;
-    canvas.drawCircle(center, radius, trackOutlinePaint);
 
     // Background track
     final trackPaint = Paint()
@@ -139,44 +188,54 @@ class _ProgressRingPainter extends CustomPainter {
       ..strokeWidth = strokeWidth;
     canvas.drawCircle(center, radius, trackPaint);
 
-    // Progress arc outline
-    final progressOutlinePaint = Paint()
-      ..color = outlineColor
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = strokeWidth + 4;
-      
-    final sweepAngle = 2 * pi * progress;
-    final startAngle = -pi / 2;
-
     if (progress > 0) {
-      canvas.drawArc(
-        Rect.fromCircle(center: center, radius: radius),
-        startAngle,
-        sweepAngle,
-        false,
-        progressOutlinePaint,
-      );
+      final sweepAngle = 2 * pi * progress;
+      final startAngle = -pi / 2;
 
-      // Progress arc
+      // Progress arc with Gradient
+      final rect = Rect.fromCircle(center: center, radius: radius);
       final progressPaint = Paint()
-        ..color = progressColor
+        ..shader = SweepGradient(
+          colors: [progressColorStart, progressColorEnd, progressColorStart],
+          stops: const [0.0, 0.5, 1.0],
+          transform: GradientRotation(startAngle),
+        ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
         ..strokeWidth = strokeWidth;
         
+      canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
+
+      // Rotating Shimmer Arc
+      final shimmerPaint = Paint()
+        ..color = Colors.white.withOpacity(0.5)
+        ..style = PaintingStyle.stroke
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = strokeWidth - 4;
+
+      final shimmerStartAngle = startAngle + (2 * pi * shimmerValue);
+      const shimmerSweepAngle = 0.5; // Small arc segment
+
+      // We only draw the shimmer if it's within the progress area
+      // For simplicity, we can draw it and clip it to the progress arc
+      canvas.save();
+      final clipPath = Path()
+        ..addArc(rect, startAngle, sweepAngle);
+      // canvas.clipPath(clipPath); // Optional: if we want it strictly inside progress
+      
       canvas.drawArc(
-        Rect.fromCircle(center: center, radius: radius),
-        startAngle,
-        sweepAngle,
+        rect,
+        shimmerStartAngle,
+        shimmerSweepAngle,
         false,
-        progressPaint,
+        shimmerPaint,
       );
+      canvas.restore();
     }
   }
 
   @override
   bool shouldRepaint(covariant _ProgressRingPainter oldDelegate) {
-    return oldDelegate.progress != progress;
+    return oldDelegate.progress != progress || oldDelegate.shimmerValue != shimmerValue;
   }
 }

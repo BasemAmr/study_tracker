@@ -22,17 +22,17 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
     // Fill Animation
     _fillController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 2000), // Slower reload animation
     );
     _fillAnimation = Tween<double>(begin: 0, end: widget.progress).animate(
-      CurvedAnimation(parent: _fillController, curve: Curves.easeOut),
+      CurvedAnimation(parent: _fillController, curve: Curves.easeInOutCubic),
     );
     _fillController.forward();
 
     // Shimmer Animation
     _shimmerController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2500),
+      duration: const Duration(milliseconds: 2000), // Faster, more active shimmer
     );
     _startShimmerLoop();
   }
@@ -41,7 +41,7 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
     while (mounted) {
       await _shimmerController.forward(from: 0.0);
       if (!mounted) return;
-      await Future.delayed(const Duration(milliseconds: 500)); // Pause
+      // No delay for infinite glistening feel
     }
   }
 
@@ -49,11 +49,11 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
   void didUpdateWidget(AnimatedStreakBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.progress != widget.progress) {
-      _fillController.duration = const Duration(milliseconds: 800);
+      _fillController.duration = const Duration(milliseconds: 1500);
       _fillAnimation = Tween<double>(
         begin: _fillAnimation.value,
         end: widget.progress,
-      ).animate(CurvedAnimation(parent: _fillController, curve: Curves.easeOut));
+      ).animate(CurvedAnimation(parent: _fillController, curve: Curves.easeInOutCubic));
       _fillController.forward(from: 0.0);
     }
   }
@@ -72,15 +72,15 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
       children: [
         // Track Background
         Container(
-          height: 6,
+          height: 8,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: const Color(0xFFF1F5F9), // Light grey/slate
-            borderRadius: BorderRadius.circular(4),
+            color: const Color(0xFFFFE4E1).withOpacity(0.3), // Soft light red/orange tint
+            borderRadius: BorderRadius.circular(6),
           ),
         ),
         
-        // The Glow
+        // The Glow (Fire/Amber)
         Positioned.fill(
           child: AnimatedBuilder(
             animation: _fillAnimation,
@@ -92,11 +92,12 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
                 widthFactor: currentProgress,
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(6),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF4ADE80).withOpacity(0.3),
-                        blurRadius: 10,
+                        color: const Color(0xFFEF4444).withOpacity(0.5),
+                        blurRadius: 15,
+                        spreadRadius: 2,
                         offset: const Offset(0, 0),
                       ),
                     ],
@@ -118,40 +119,43 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
                 alignment: Alignment.centerLeft,
                 widthFactor: currentProgress,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(6),
                   child: Stack(
                     children: [
-                      // Gradient Fill
+                      // Gradient Fill (Amber to Fire Red)
                       Container(
                         decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0xFF4ADE80), // Light Green
-                              Color(0xFF22C55E), // Primary Green
+                              Color(0xFFF59E0B), // Amber
+                              Color(0xFFEF4444), // Fire Red
                             ],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                           ),
                         ),
                       ),
-                      // Shimmer highlight (The Glisten)
+                      // Shimmer highlight (High-Prominence Glisten)
                       Positioned.fill(
                         child: AnimatedBuilder(
                           animation: _shimmerController,
                           builder: (context, _) {
                             return FractionalTranslation(
-                              translation: Offset(_shimmerController.value * 3 - 1.5, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.white.withOpacity(0.0),
-                                      Colors.white.withOpacity(0.4),
-                                      Colors.white.withOpacity(0.0),
-                                    ],
-                                    stops: const [0.0, 0.5, 1.0],
-                                    begin: const Alignment(-0.5, 0.0),
-                                    end: const Alignment(0.5, 0.0),
+                              translation: Offset(_shimmerController.value * 4 - 2, 0),
+                              child: Transform.rotate(
+                                angle: 0.5, // Tilted shimmer
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.white.withOpacity(0.0),
+                                        Colors.white.withOpacity(0.7), // More prominent
+                                        Colors.white.withOpacity(0.0),
+                                      ],
+                                      stops: const [0.0, 0.5, 1.0],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
                                   ),
                                 ),
                               ),
