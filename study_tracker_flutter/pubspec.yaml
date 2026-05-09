@@ -1,0 +1,104 @@
+name: study_tracker
+description: A calm, premium study tracking app — local-first, offline, personal.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  
+  # State management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  provider: ^6.1.1
+  
+  # Local database
+  drift: ^2.14.1
+  sqlite3_flutter_libs: ^0.5.18
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  
+  # Navigation
+  go_router: ^13.2.0
+  
+  # Charts
+  fl_chart: ^0.66.2
+  
+  # Icons
+  lucide_icons: ^0.257.0
+  
+  # Utilities
+  intl: ^0.20.2
+  url_launcher: ^6.2.6
+  uuid: ^4.3.3
+  collection: ^1.18.0
+  
+  # Export
+  csv: ^6.0.0
+  share_plus: ^7.2.1
+
+  # UI extras
+  google_fonts: ^6.1.0
+
+  # Media playback
+  just_audio: ^0.9.40
+  just_audio_background: ^0.0.1-beta.17
+
+  # Notifications
+  flutter_local_notifications: ^17.0.0
+  flutter_timezone: ^4.1.0
+  timezone: ^0.9.0
+  audio_session: ^0.1.21
+  file_picker: ^8.0.7
+
+  # Sync — encryption
+  encrypt: ^5.0.3
+  pointycastle: ^3.7.4
+
+  # Sync — networking
+  http: ^1.2.1
+  nsd: ^5.0.1
+
+  # Sync — Bluetooth (Android)
+  flutter_bluetooth_serial: ^0.4.0
+  permission_handler: ^12.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  drift_dev: ^2.14.1
+  build_runner: ^2.4.8
+  riverpod_generator: ^2.3.9
+  flutter_launcher_icons: ^0.14.3
+
+flutter:
+  generate: true
+  uses-material-design: true
+  
+  assets:
+    - assets/backgrounds/
+
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Tajawal-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Tajawal-Bold.ttf
+          weight: 700
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/icons/app_icon.png
+  min_sdk_android: 21
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: assets/icons/app_icon.png

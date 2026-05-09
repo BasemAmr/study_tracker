@@ -1,0 +1,556 @@
+{
+  "@@locale": "en",
+  "appTitle": "StudyTracker",
+  "settingsTitle": "Configuration",
+  "settingsSubtitle": "Manage your study environment, subjects, and preferences for deep work sessions.",
+  "saveAllSettings": "SAVE ALL SETTINGS",
+  "settingsSaved": "Settings saved successfully!",
+  "maintenanceTitle": "Maintenance",
+  "maintenanceSubtitle": "Compact local database and clear temporary cache files.",
+  "compactDatabase": "Compact Database (VACUUM)",
+  "clearAppCache": "Clear App Cache",
+  "databaseCompacted": "Database compacted. Reclaimed ~{mb} MB.",
+  "@databaseCompacted": {
+    "placeholders": {
+      "mb": {}
+    }
+  },
+  "databaseCompactFailed": "Database compact failed: {error}",
+  "@databaseCompactFailed": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cacheCleared": "Cache cleared. Removed ~{mb} MB.",
+  "@cacheCleared": {
+    "placeholders": {
+      "mb": {}
+    }
+  },
+  "cacheClearFailed": "Cache clear failed: {error}",
+  "@cacheClearFailed": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "profileCardTitle": "Scholar Profile",
+  "displayNameLabel": "DISPLAY NAME",
+  "academicLevelLabel": "ACADEMIC LEVEL",
+  "languageLabel": "LANGUAGE",
+  "scholarProfilesLabel": "SCHOLAR PROFILES",
+  "switchProfile": "Switch",
+  "addScholar": "Add Scholar",
+  "addScholarTitle": "Add Scholar",
+  "editScholarTitle": "Edit Scholar",
+  "displayNameField": "Display name",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "confirmDeleteTitle": "Delete Session?",
+  "confirmDeleteBody": "This action cannot be undone. Do you want to remove this study session from your history?",
+  "wipeDataConfirmation": "Are you sure you want to delete ALL data? This will remove all profiles, sessions, and settings. This cannot be undone.",
+  "wipeDataAction": "Wipe Everything",
+  "undergraduate": "Undergraduate",
+  "postgraduate": "Postgraduate",
+  "doctoralCandidate": "Doctoral Candidate",
+  "lifelongLearner": "Lifelong Learner",
+  "studyMechanicsTitle": "Study Mechanics",
+  "dailyTargetLabel": "DAILY TARGET",
+  "focusBlockLabel": "FOCUS BLOCK",
+  "shortBreakLabel": "SHORT BREAK",
+  "hoursUnit": "hrs",
+  "minutesUnit": "min",
+  "aiChallengesTitle": "AI Challenges",
+  "aiChallengesSubtitle": "Dynamic quizzes based on study notes.",
+  "groqApiKeyLabel": "GROQ API KEY",
+  "applyKey": "Apply Key",
+  "apiKeySaved": "API key saved.",
+  "statusLabel": "Status:",
+  "statusReady": "Ready",
+  "curriculumTitle": "Curriculum",
+  "newGroup": "NEW GROUP",
+  "newSubject": "NEW SUBJECT",
+  "addSubjectGroup": "Add Subject Group",
+  "groupName": "Group name",
+  "create": "Create",
+  "failedCreateGroup": "Failed to create group: {error}",
+  "@failedCreateGroup": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "addSubject": "Add Subject",
+  "subjectName": "Subject name",
+  "group": "Group",
+  "failedCreateSubject": "Failed to create subject: {error}",
+  "@failedCreateSubject": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "editGroup": "Edit Group",
+  "deleteGroupTitle": "Delete Group?",
+  "deleteGroupPrompt": "Delete \"{name}\" and ungroup its subjects?",
+  "@deleteGroupPrompt": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "editSubject": "Edit Subject",
+  "deleteSubjectTitle": "Delete Subject?",
+  "deleteSubjectPrompt": "Delete \"{name}\"?",
+  "@deleteSubjectPrompt": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "confirmDeleteTitle": "Delete Session?",
+  "confirmDeleteBody": "Are you sure you want to delete this session? This action cannot be undone.",
+  "select": "Select",
+  "editGroupMenu": "Edit Group",
+  "deleteGroupMenu": "Delete Group",
+  "noSubjectsFound": "No Subjects Found",
+  "noSubjectsCreateHint": "Create a group then add your first subject.",
+  "noSubjectsAddHint": "Add a subject to this group to start tracking.",
+  "studySubject": "Study subject",
+  "sessionsLabel": "Sessions",
+  "editSubjectMenu": "Edit Subject",
+  "deleteSubjectMenu": "Delete Subject",
+  "dataManagementTitle": "Data Management",
+  "exportData": "Export Data",
+  "resetProgress": "Reset Progress",
+  "dangerZoneTitle": "Danger Zone",
+  "wipeDataConfirmation": "This will permanently delete all your study sessions, profiles, and settings. This action cannot be undone. Are you absolutely sure?",
+  "wipeDataAction": "DELETE EVERYTHING",
+  "dataWipedSuccess": "All data has been wiped.",
+  "ambienceTitle": "Ambience",
+  "library": "Library",
+  "forest": "Forest",
+  "focusAudioTitle": "Focus Audio",
+  "lofiBeatsStream": "Lofi Beats Stream",
+  "volume": "Volume",
+  "navDashboard": "Dashboard",
+  "navSessions": "Sessions",
+  "navAnalytics": "Analytics",
+  "navAchievements": "Achievements",
+  "navSettings": "Settings",
+  "noMediaPlaying": "No media playing",
+  "tooltipMinimizePlayer": "Minimize player",
+  "tooltipHidePlayer": "Hide player",
+  "tooltipFocusAudio": "Focus Audio"
+  ,"dashboardLoadError": "Unable to load dashboard data"
+  ,"dashboardScholarFallbackName": "Scholar"
+  ,"dashboardHello": "Hello, {name}"
+  ,"@dashboardHello": {"placeholders": {"name": {}}}
+  ,"dashboardLevelLine": "Level {level} {rank} · {xp} XP to next level (~{sessions} sessions / ~{minutes} focus min equivalent)."
+  ,"@dashboardLevelLine": {"placeholders": {"level": {}, "rank": {}, "xp": {}, "sessions": {}, "minutes": {}}}
+  ,"quickStartPomodoro": "Quick Start Pomodoro"
+  ,"quickStartLongSession": "Quick Start Long Session"
+  ,"dashboardMissionRefreshAi": "AI missions fetched successfully."
+  ,"dashboardMissionRefreshFallback": "Missions refreshed with local fallback."
+  ,"wellbeingFlowTitle": "The Flow State"
+  ,"wellbeingFlowSubtitle": "OPTIMAL PERFORMANCE"
+  ,"wellbeingProudTitle": "The Proud Scholar"
+  ,"wellbeingProudSubtitle": "CONSISTENT STREAK"
+  ,"wellbeingBurnoutTitle": "Burnout Warning"
+  ,"wellbeingBurnoutSubtitle": "REST RECOMMENDED"
+  ,"wellbeingIdleTitle": "Gentle Reminder"
+  ,"wellbeingIdleSubtitle": "IDLE"
+  ,"dailyIntelTitle": "Daily Intel"
+  ,"dailyIntelSubtitle": "Reviewing your cognitive load for today."
+  ,"dailyIntelDeepWork": "Deep Work"
+  ,"dailyIntelFocusScore": "Focus Score"
+  ,"dailyIntelStreak": "STREAK"
+  ,"daysLabel": "Days"
+  ,"dailyObjectiveTitle": "Current Objective"
+  ,"completedLabel": "COMPLETED"
+  ,"goalLabel": "GOAL"
+  ,"activeMissionBadge": "ACTIVE MISSION"
+  ,"activeMissionEta": "ETA: 45 MIN"
+  ,"activeMissionRefreshTooltip": "Refresh mission"
+  ,"progressLabel": "PROGRESS"
+  ,"consistencyGridTitle": "Consistency Grid"
+  ,"consistencyLast14Days": "Last 14 Days"
+  ,"lessLabel": "Less"
+  ,"moreLabel": "More"
+  ,"historicalContextTitle": "Me vs. Past Self"
+  ,"historicalThisWeek": "THIS WEEK"
+  ,"historicalDeepWorkVolume": "DEEP WORK VOLUME"
+  ,"historicalLastWeek": "LAST WEEK"
+  ,"historicalAverageFocusSession": "AVERAGE FOCUS SESSION"
+  ,"historicalCompletionRate": "COMPLETION RATE"
+  ,"weekdayMonShort": "M"
+  ,"weekdayTueShort": "T"
+  ,"weekdayWedShort": "W"
+  ,"weekdayThuShort": "T"
+  ,"weekdayFriShort": "F"
+  ,"weekdaySatShort": "S"
+  ,"weekdaySunShort": "S"
+  ,"sessionsSubtitle": "Study sessions"
+  ,"logManually": "Log manually"
+  ,"filters": "Filters"
+  ,"filtersActive": "Filters (active)"
+  ,"historyFiltersTitle": "History Filters"
+  ,"close": "Close"
+  ,"timerTab": "Timer"
+  ,"stopwatchTab": "Stopwatch"
+  ,"historyTab": "History"
+  ,"subjectsGroupsTab": "Subjects & Groups"
+  ,"sessionQuickStartStarted": "{mode} started."
+  ,"@sessionQuickStartStarted": {"placeholders": {"mode": {}}}
+  ,"sessionModePomodoro": "Pomodoro"
+  ,"sessionModeLongSession": "Long Session"
+  ,"sessionModeManual": "Manual Log"
+  ,"sessionsLoadError": "Unable to load sessions"
+  ,"noSessionsLogged": "No sessions logged yet"
+  ,"minutesShortValue": "{minutes}m"
+  ,"@minutesShortValue": {"placeholders": {"minutes": {}}}
+  ,"searchHistory": "Search history"
+  ,"subjectsError": "Subjects error"
+  ,"subjectLabel": "Subject"
+  ,"allSubjects": "All subjects"
+  ,"modeLabel": "Mode"
+  ,"allModes": "All modes"
+  ,"filtersFrom": "From {value}"
+  ,"@filtersFrom": {"placeholders": {"value": {}}}
+  ,"filtersTo": "To {value}"
+  ,"@filtersTo": {"placeholders": {"value": {}}}
+  ,"clear": "Clear"
+  ,"anyLabel": "Any"
+  ,"logSessionManuallyTitle": "Log session manually"
+  ,"subjectOptional": "Subject (optional)"
+  ,"generalStudy": "General study"
+  ,"topicLabel": "Topic"
+  ,"moodLabel": "Mood"
+  ,"moodFocused": "Focused"
+  ,"moodProductive": "Productive"
+  ,"moodCalm": "Calm"
+  ,"moodTired": "Tired"
+  ,"moodStressed": "Stressed"
+  ,"moodDistracted": "Distracted"
+  ,"durationMinutesLabel": "Duration (minutes)"
+  ,"enterValidDuration": "Enter a valid duration"
+  ,"notesLabel": "Notes"
+  ,"saving": "Saving..."
+  ,"analyticsSubtitle": "Review your cognitive endurance and focus metrics over the current cycle."
+  ,"achievementsPersonalGrowth": "Personal Growth"
+  ,"achievementsTabAwards": "Awards"
+  ,"achievementsTabAiMissions": "AI Missions"
+  ,"achievementsTakenAwards": "Taken awards: {count}"
+  ,"@achievementsTakenAwards": {"placeholders": {"count": {}}}
+  ,"achievementsLevelRank": "Lvl {level} {rank}"
+  ,"@achievementsLevelRank": {"placeholders": {"level": {}, "rank": {}}}
+  ,"achievementsUnlocked": "{unlocked}/{total} unlocked"
+  ,"@achievementsUnlocked": {"placeholders": {"unlocked": {}, "total": {}}}
+  ,"achievementsXpProgress": "{current} / {total} XP this level ({toGo} to go)"
+  ,"@achievementsXpProgress": {"placeholders": {"current": {}, "total": {}, "toGo": {}}}
+  ,"achievementsFilterTaken": "AWARDS I TOOK"
+  ,"achievementsFilterDaily": "DAILY"
+  ,"achievementsFilterWeekly": "WEEKLY"
+  ,"achievementsFilterMonthly": "MONTHLY"
+  ,"achievementsFilterTiers": "TIERS"
+  ,"achievementsProgress": "Progress"
+  ,"achievementsRankMaster": "Master"
+  ,"achievementsRankScholar": "Scholar"
+  ,"achievementsRankAdept": "Adept"
+  ,"achievementsRankLearner": "Learner"
+  ,"achievementsRankNovice": "Novice"
+  ,"achievementsCurrentMissions": "Current Missions"
+  ,"achievementsRefreshSurprise": "Refresh Surprise"
+  ,"achievementsGroqDetected": "Groq key detected. Missions will use AI generation with local fallback."
+  ,"achievementsNoGroq": "No Groq key found. Missions are generated locally; add or replace your key in Settings anytime."
+  ,"achievementsNoActiveMissions": "No active missions. Tap refresh to generate new missions."
+  ,"achievementsCompletedChallenges": "Completed Challenges"
+  ,"achievementsNoCompletedMissions": "No completed missions yet."
+  ,"achievementsMissionRefreshed": "{tier} mission refreshed."
+  ,"@achievementsMissionRefreshed": {"placeholders": {"tier": {}}}
+  ,"achievementsRefreshThisMission": "Refresh this mission"
+  ,"achievementsReward": "Reward: {reward}"
+  ,"@achievementsReward": {"placeholders": {"reward": {}}}
+  ,"achievementsTierDaily": "DAILY"
+  ,"achievementsTierWeekly": "WEEKLY"
+  ,"achievementsTierMonthly": "MONTHLY"
+  ,"achievementsTierSurprise": "SURPRISE"
+  ,"achievementsDifficultyEasy": "EASY"
+  ,"achievementsDifficultyMedium": "MEDIUM"
+  ,"achievementsDifficultyHard": "HARD"
+  ,"achievementsDifficultyExtreme": "EXTREME"
+  ,"achievementsMetricSessions": "sessions"
+  ,"achievementsMetricMinutes": "minutes"
+  ,"achievementsMetricStreak": "streak"
+  ,"achievementsMetricSubjects": "subjects"
+  ,"achievementsMetricPomodoros": "pomodoros"
+  ,"awardTitleDailyStarter": "Starter"
+  ,"awardDescDailyStarter": "Complete your first session today"
+  ,"awardTitleDeepWorkDaily": "Deep Work"
+  ,"awardDescDeepWorkDaily": "Study for 60 minutes today"
+  ,"awardTitleSprintDaily": "Sprint"
+  ,"awardDescSprintDaily": "Study for 2 hours today"
+  ,"awardTitlePomo5Daily": "Pomo-5"
+  ,"awardDescPomo5Daily": "Complete 5 Pomodoro sessions today"
+  ,"awardTitleMidnightOil": "Midnight Oil"
+  ,"awardDescMidnightOil": "Study between 12 AM and 3 AM"
+  ,"awardTitleEarlyRiser": "Early Riser"
+  ,"awardDescEarlyRiser": "Start a session before 7 AM"
+  ,"awardTitleSubjectExplorer": "Subject Explorer"
+  ,"awardDescSubjectExplorer": "Study 2 different subjects today"
+  ,"awardTitleNoZeroDay": "No Zero Day"
+  ,"awardDescNoZeroDay": "Log at least 1 minute of study"
+  ,"awardTitleTaskFinisher": "Task Finisher"
+  ,"awardDescTaskFinisher": "Complete all tasks in a session"
+  ,"awardTitlePerfectWeek": "Perfect Week"
+  ,"awardDescPerfectWeek": "Study 2+ hours every day for a week"
+  ,"awardTitleWeekendWarrior": "Weekend Warrior"
+  ,"awardDescWeekendWarrior": "Study on both Thursday and Friday"
+  ,"awardTitleTimeInvestorWeekly": "Time Investor"
+  ,"awardDescTimeInvestorWeekly": "Study for 10+ hours this week"
+  ,"awardTitleMonthlyMaster": "Monthly Master"
+  ,"awardDescMonthlyMaster": "25 active days in one month"
+  ,"awardTitleFortyHourClub": "Forty Hour Club"
+  ,"awardDescFortyHourClub": "40+ hours in one month"
+  ,"awardTitleSessionsBronze": "Bronze Scholar"
+  ,"awardDescSessionsBronze": "Study for 100 total hours"
+  ,"awardTitleSessionsSilver": "Silver Scholar"
+  ,"awardDescSessionsSilver": "Study for 300 total hours"
+  ,"awardTitleSessionsGold": "Gold Scholar"
+  ,"awardDescSessionsGold": "Study for 500 total hours"
+  ,"awardTitleSessionsLegend": "Legendary Scholar"
+  ,"awardDescSessionsLegend": "Study for 1000 total hours"
+  ,"awardTitleHoursBronze": "100 Hour Milestone"
+  ,"awardDescHoursBronze": "Study for 100 total hours"
+  ,"awardTitleStreakWeek": "Steady Rhythm"
+  ,"awardDescStreakWeek": "7-day study streak with 2+ hour days"
+  ,"awardTitlePhoenix": "Phoenix"
+  ,"awardDescPhoenix": "Resume study after a 3+ day gap"
+  ,"awardTitleTripleThreat": "Triple Threat"
+  ,"awardDescTripleThreat": "Session + Pomodoro + 1h focus in one day"
+  ,"awardTitleOverkill": "Overkill"
+  ,"awardDescOverkill": "Study 5+ hours in a single day"
+  ,"apply": "Apply"
+  ,"sessionCustomOverlaySaved": "Custom overlay image saved to {path}"
+  ,"@sessionCustomOverlaySaved": {"placeholders": {"path": {}}}
+  ,"sessionOverlayHueTitle": "Overlay Hue"
+  ,"sessionHueValue": "Hue: {value}"
+  ,"@sessionHueValue": {"placeholders": {"value": {}}}
+  ,"sessionFullscreen": "Fullscreen"
+  ,"sessionExitFullscreen": "Exit fullscreen"
+  ,"sessionFocusedMinutes": "{minutes} focused"
+  ,"@sessionFocusedMinutes": {"placeholders": {"minutes": {}}}
+  ,"sessionFocusBreakLine": "{focus}m focus · {breakMinutes}m break"
+  ,"@sessionFocusBreakLine": {"placeholders": {"focus": {}, "breakMinutes": {}}}
+  ,"sessionContinuousFocusMode": "Continuous focus mode"
+  ,"sessionAtmosphere": "Atmosphere"
+  ,"sessionAtmosphereCityTwilight": "City Twilight"
+  ,"sessionAtmosphereCozyCafe": "Cozy Cafe"
+  ,"sessionAtmosphereCustom": "Custom"
+  ,"sessionAtmosphereOverlay": "Overlay"
+  ,"sessionHideDetails": "Hide session details"
+  ,"sessionShowDetails": "Session details"
+  ,"sessionStatusReady": "Ready"
+  ,"sessionStatusFocusing": "Focusing"
+  ,"sessionStatusBreakTime": "Break time"
+  ,"sessionStatusPaused": "Paused"
+  ,"sessionStart": "Start session"
+  ,"sessionSkipBreak": "Skip break"
+  ,"sessionStopAndSave": "Stop & Save"
+  ,"sessionPause": "Pause"
+  ,"sessionResume": "Resume"
+  ,"stopwatchTitle": "Stopwatch"
+  ,"stopwatchStart": "Start"
+  ,"stopwatchLap": "Lap"
+  ,"stopwatchReset": "Reset"
+  ,"stopwatchLapNumber": "Lap {number}"
+  ,"@stopwatchLapNumber": {"placeholders": {"number": {}}}
+  ,"analyticsStatTotalTime": "TOTAL TIME"
+  ,"analyticsStatDailyAvg": "DAILY AVG"
+  ,"analyticsStatPeakSession": "PEAK SESSION"
+  ,"analyticsStatPeakHour": "PEAK HOUR"
+  ,"analyticsAm": "AM"
+  ,"analyticsPm": "PM"
+  ,"analyticsDailyTrendTitle": "Daily Trend"
+  ,"analyticsSessionRatioTitle": "Session Ratio"
+  ,"analyticsSessionRatioSubtitle": "Optimal balance between focus and rest."
+  ,"analyticsFocusRatio": "Focus ({value}%)"
+  ,"@analyticsFocusRatio": {"placeholders": {"value": {}}}
+  ,"analyticsBreakRatio": "Break ({value}%)"
+  ,"@analyticsBreakRatio": {"placeholders": {"value": {}}}
+  ,"analyticsSubjectBreakdownTitle": "Subject Breakdown"
+  ,"analyticsNoSubjectBreakdown": "No tags assigned to recent sessions."
+  ,"analyticsSubjectBreakdownLabel": "Subject breakdown"
+  ,"analyticsStateDistributionTitle": "State Distribution"
+  ,"analyticsNoMoodData": "No mood data available."
+  ,"analyticsMoodDeepFlow": "Deep Flow"
+  ,"analyticsMoodResistance": "Resistance"
+  ,"analyticsMoodFatigue": "Fatigue"
+  ,"analyticsRecentOutputTitle": "Recent Output"
+  ,"analyticsViewAll": "VIEW ALL"
+  ,"analyticsNoRecentOutput": "No recent output found."
+  ,"analyticsCompletedPrefix": "COMPLETED"
+  ,"analyticsPeakStudyHoursTitle": "Peak Study Hours"
+  ,"analyticsHeatmapTitle": "One Year Consistency Heatmap"
+  ,"analyticsNoSessionsYet": "No sessions yet"
+  ,"analyticsStartDay": "Start day: {date}"
+  ,"@analyticsStartDay": {"placeholders": {"date": {}}}
+
+  ,"statusHubStreakRunway": "STREAK RUNWAY"
+  ,"statusHubTodaySignal": "Today's signal"
+  ,"statusHubDaysHot": "days hot"
+  ,"statusHubNextCrest": "NEXT CREST"
+  ,"statusHubDaysToCrest": "{count, plural, =0{Due today} one{# day out} other{# days out}}"
+  ,"@statusHubDaysToCrest": {"placeholders": {"count": {"type": "int"}}}
+  ,"statusHubPersonalBestFull": "Personal best streak · {days} days"
+  ,"@statusHubPersonalBestFull": {"placeholders": {"days": {"type": "int"}}}
+  ,"statusHubLadderClearedTitle": "LADDER CLEARED"
+  ,"statusHubPersonalBestInline": "Personal best · {days} days"
+  ,"@statusHubPersonalBestInline": {"placeholders": {"days": {"type": "int"}}}
+
+  ,"statusHubTierColdStart": "Cold start"
+  ,"statusHubTierFirstSpark": "First spark"
+  ,"statusHubTierKindlingClimb": "Kindling climb"
+  ,"statusHubTierScholarPulse": "Scholar pulse"
+  ,"statusHubTierDeepRhythm": "Deep rhythm"
+  ,"statusHubTierMarathonMind": "Marathon mind"
+  ,"statusHubTierHallOfLegends": "Hall of legends"
+
+  ,"statusHubCkptFlavor3": "Kindling crest"
+  ,"statusHubCkptFlavor7": "Scholar pulse"
+  ,"statusHubCkptFlavor14": "Rhythm crest"
+  ,"statusHubCkptFlavor30": "Month forge"
+  ,"statusHubCkptFlavor90": "Season legend"
+  ,"statusHubCkptFlavorGeneric": "Milestone"
+
+  ,"statusHubChasePeakRunway": "Personal peak: {days}-day runway. Rest, then forge a new saga."
+  ,"@statusHubChasePeakRunway": {"placeholders": {"days": {"type": "int"}}}
+  ,"statusHubChaseEncore": "You've cleared every crest on the ladder. Aim for {goal}+ as your encore."
+  ,"@statusHubChaseEncore": {"placeholders": {"goal": {"type": "int"}}}
+  ,"statusHubChaseStartToday": "Study today — your first crest is {flavorName} at {days} days in a row."
+  ,"@statusHubChaseStartToday": {"placeholders": {"flavorName": {"type": "String"}, "days": {"type": "int"}}}
+  ,"statusHubChaseCement": "{flavorName} is in reach — log today to cement it."
+  ,"@statusHubChaseCement": {"placeholders": {"flavorName": {"type": "String"}}}
+  ,"statusHubChaseRemain": "{count, plural, one{1 more day to {flavorName} ({milestone}-day crest).} other{{count} more days to {flavorName} ({milestone}-day crest).}}"
+  ,"@statusHubChaseRemain": {"placeholders": {"count": {"type": "int"}, "flavorName": {"type": "String"}, "milestone": {"type": "int"}}}
+
+  ,"statusHubBodyFlow": "Long focus today — rides the edge of challenge without overwhelm."
+  ,"statusHubBodyProud": "Streak muscle is forged — savor the grind, shield your recovery windows."
+  ,"statusHubBodyBurnout": "High volume logged — hydrate, shorten the next sprint, defend sleep."
+  ,"statusHubBodyIdle": "No deep work tracked yet — a single focused block unlocks streak fuel."
+
+  ,"statusHubChipOptimalFocus": "Optimal focus"
+  ,"statusHubChipStreakCrest": "Streak crest"
+  ,"statusHubChipRestGuarded": "Rest guarded"
+  ,"statusHubChipReadyIgnite": "Ready to ignite"
+  ,"statusHubChipFlowRule": "Flow ≥ 120 min today"
+  ,"statusHubChipFatigueRule": "Fatigue watch >360m"
+  ,"notif_prestudy_v1": "Time to study {subject}. Start a focus block."
+  ,"@notif_prestudy_v1": {"placeholders": {"subject": {}}}
+  ,"notif_prestudy_v2": "Your {subject} focus block is waiting."
+  ,"@notif_prestudy_v2": {"placeholders": {"subject": {}}}
+  ,"notif_prestudy_v3": "Keep the momentum going with {subject}."
+  ,"@notif_prestudy_v3": {"placeholders": {"subject": {}}}
+  ,"notif_streak_body": "Protect your {count}-day streak. Log a session before midnight."
+  ,"@notif_streak_body": {"placeholders": {"count": {"type": "int"}}}
+  ,"notif_weekly_full": "{hours}h {minutes}m across {count} sessions. Top subject: {subject}."
+  ,"@notif_weekly_full": {"placeholders": {"hours": {"type": "int"}, "minutes": {"type": "int"}, "count": {"type": "int"}, "subject": {"type": "String"}}}
+  ,"notif_weekly_empty": "No sessions this week. Start a new streak today."
+  ,"notif_goal_behind": "You're {hoursBehind}h behind on {goalName}. {daysLeft} days left to catch up."
+  ,"@notif_goal_behind": {"placeholders": {"hoursBehind": {"type": "int"}, "daysLeft": {"type": "int"}, "goalName": {}}}
+  ,"notif_reengage_short": "It's been {days} days. Let's get back to studying."
+  ,"@notif_reengage_short": {"placeholders": {"days": {"type": "int"}}}
+  ,"notif_reengage_long": "We miss you! Start a new session and get back on track."
+  ,"notif_settings_title": "Notifications"
+  ,"notif_settings_prestudy": "Pre-Study Reminder"
+  ,"notif_settings_prestudy_desc": "Fire at {time} · every day"
+  ,"@notif_settings_prestudy_desc": {"placeholders": {"time": {}}}
+  ,"notif_settings_streak": "Streak Protection"
+  ,"notif_settings_weekly": "Weekly Summary"
+  ,"notif_settings_goal": "Goal Progress"
+  ,"notif_settings_reengage": "Re-engagement"
+  ,"notif_settings_reengage_desc": "After 3 days, at {time}"
+  ,"@notif_settings_reengage_desc": {"placeholders": {"time": {}}}
+  ,"notif_settings_quiet_title": "Do Not Disturb"
+  ,"notif_settings_quiet_desc": "Quiet hours: {start} → {end}"
+  ,"@notif_settings_quiet_desc": {"placeholders": {"start": {}, "end": {}}}
+  ,"notif_settings_quiet_start": "Quiet Hours Start"
+  ,"notif_settings_quiet_end": "Quiet Hours End"
+  ,"notif_settings_quiet_start_desc": "No non-urgent notifications after this time"
+  ,"notif_settings_quiet_end_desc": "Notifications resume after this time"
+  ,"notif_permission_title": "Enable Notifications?"
+  ,"notif_permission_body": "Study reminders help you stay consistent. We'll send you timely updates about your progress and streaks."
+  ,"notif_permission_enable": "Enable"
+  ,"notif_permission_later": "Later"
+  ,"notif_denied_hint": "Notifications are disabled. Open device settings to enable them."
+  ,"notif_settings_streak_desc": "Reminder time is chosen automatically from your streak pattern (evening)."
+  ,"notif_settings_goal_desc": "Reminder time is chosen automatically from your weekly goal progress."
+  ,"notif_settings_weekly_desc": "Every {day} at {time}"
+  ,"@notif_settings_weekly_desc": {"placeholders": {"day": {}, "time": {}}}
+  ,"notif_time_fire_at": "Fire at"
+  ,"notif_day_fire_at": "Fire on"
+  ,"monday": "Monday"
+  ,"tuesday": "Tuesday"
+  ,"wednesday": "Wednesday"
+  ,"thursday": "Thursday"
+  ,"friday": "Friday"
+  ,"saturday": "Saturday"
+  ,"sunday": "Sunday"
+  ,"notif_time_weekly_summary": "Every Sunday at"
+  ,"ai_coach_title": "Your AI Coach"
+  ,"ai_coach_connect": "Connect AI"
+  ,"ai_debrief_loading": "Reflecting on your session…"
+  ,"ai_challenge_title": "Today's Challenge"
+  ,"ai_narrative_title": "This Week's Summary"
+  ,"ai_narrative_button": "Generate Report"
+  ,"ai_narrative_loading": "Creating your report…"
+  ,"ai_difficulty_title": "Subject Analysis"
+  ,"ai_difficulty_button": "Analyze My Subjects"
+  ,"ai_difficulty_not_enough": "Need more sessions to analyze. Keep studying!"
+  ,"ai_difficulty_error": "Could not analyze subjects right now. Try again later."
+  ,"ai_settings_title": "AI Features"
+  ,"ai_settings_subtitle": "Connect Groq once, then enable the features you want."
+  ,"ai_challenges_master_label": "Challenges (overall)"
+  ,"ai_settings_toggles_heading": "Per-feature AI"
+  ,"ai_settings_load_error": "Could not load AI feature settings."
+  ,"ai_settings_api_key": "Groq API Key"
+  ,"ai_settings_api_key_hint": "Paste your Groq API key here"
+  ,"ai_settings_connected": "Connected ✓"
+  ,"ai_settings_show_key": "Show"
+  ,"ai_settings_hide_key": "Hide"
+  ,"ai_settings_get_key": "Get a free Groq API key"
+  ,"ai_settings_coach": "AI Coach"
+  ,"ai_settings_coach_desc": "Daily personalized encouragement"
+  ,"ai_settings_challenges": "Smart Challenges"
+  ,"ai_settings_challenges_desc": "Difficulty-adjusted study suggestions"
+  ,"ai_settings_debrief": "Session Debrief"
+  ,"ai_settings_debrief_desc": "AI feedback after each study session"
+  ,"ai_settings_narrative": "Weekly Narrative"
+  ,"ai_settings_narrative_desc": "Summary of your study week"
+  ,"ai_settings_difficulty": "Subject Analysis"
+  ,"ai_settings_difficulty_desc": "Identify your strongest and weakest areas"
+  ,"ai_settings_surprise": "Surprise Missions"
+  ,"ai_settings_surprise_desc": "Random notifications for AI-generated missions"
+  ,"ai_settings_surprise_interval": "Check every {hours} hours"
+  ,"@ai_settings_surprise_interval": {"placeholders": {"hours": {}}}
+  ,"ai_debrief_tap_to_dismiss": "Tap to dismiss"
+  ,"ai_copy_narrative_snackbar": "Weekly narrative copied to clipboard"
+  ,"notifStreakBody": "You're on a {streak}-day study streak. Open StudyTracker to keep it alive."
+  ,"@notifStreakBody": {"placeholders": {"streak": {}}}
+  ,"notifGoalBehind": "You're about {hours}h behind your weekly goal for {name}. {days} day(s) left to catch up."
+  ,"@notifGoalBehind": {"placeholders": {"hours": {}, "days": {}, "name": {}}}
+  ,"notifReengageLong": "It's been a while — even a short session today helps rebuild momentum."
+  ,"notifReengageShort": "Quiet for {days} day(s). Tap to log a quick study session."
+  ,"@notifReengageShort": {"placeholders": {"days": {}}}
+  ,"notifPrestudyV1": "Upcoming focus: {subject}. Preview your plan when you're ready."
+  ,"@notifPrestudyV1": {"placeholders": {"subject": {}}}
+  ,"notifPrestudyV2": "Next block: {subject}. Set a small goal before you start."
+  ,"@notifPrestudyV2": {"placeholders": {"subject": {}}}
+  ,"notifPrestudyV3": "Time to warm up for {subject} — open the timer when you're set."
+  ,"@notifPrestudyV3": {"placeholders": {"subject": {}}}
+  ,"notifWeeklyEmpty": "No sessions logged yet this week."
+  ,"notifWeeklyFull": "This week so far: {hours}h {minutes}m across {sessionCount} sessions. Top subject: {subject}."
+  ,"@notifWeeklyFull": {"placeholders": {"hours": {}, "minutes": {}, "sessionCount": {}, "subject": {}}}
+  ,"dashboardDailyProgress": "Daily Progress"
+  ,"dashboardLast7Days": "Last 7 Days"
+  ,"dashboardToday": "Today"
+  ,"dashboardStreak": "Streak"
+  ,"dashboardAllTime": "All Time"
+  ,"dashboardDaysToNext": "Days to Next"
+}

@@ -1,0 +1,550 @@
+{
+  "@@locale": "ar",
+  "appTitle": "متتبع الدراسة",
+  "settingsTitle": "الإعدادات",
+  "settingsSubtitle": "نظّم بيئة الدراسة والمواد الدراسية وتفضيلات جلسات التركيز العميق.",
+  "saveAllSettings": "حفظ كل الإعدادات",
+  "settingsSaved": "تم حفظ الإعدادات بنجاح!",
+  "maintenanceTitle": "الصيانة",
+  "maintenanceSubtitle": "اضغط قاعدة البيانات المحلية وامسح ملفات التخزين المؤقت المؤقتة.",
+  "compactDatabase": "ضغط قاعدة البيانات (VACUUM)",
+  "clearAppCache": "مسح ذاكرة التطبيق المؤقتة",
+  "databaseCompacted": "تم ضغط قاعدة البيانات. تم استرجاع حوالي {mb} ميجابايت.",
+  "@databaseCompacted": {
+    "placeholders": {
+      "mb": {}
+    }
+  },
+  "databaseCompactFailed": "فشل ضغط قاعدة البيانات: {error}",
+  "@databaseCompactFailed": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "cacheCleared": "تم مسح الذاكرة المؤقتة. تمت إزالة حوالي {mb} ميجابايت.",
+  "@cacheCleared": {
+    "placeholders": {
+      "mb": {}
+    }
+  },
+  "cacheClearFailed": "فشل مسح الذاكرة المؤقتة: {error}",
+  "@cacheClearFailed": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "profileCardTitle": "ملف الباحث",
+  "displayNameLabel": "الاسم الظاهر",
+  "academicLevelLabel": "المستوى الأكاديمي",
+  "languageLabel": "اللغة",
+  "scholarProfilesLabel": "ملفات الباحثين",
+  "switchProfile": "تبديل",
+  "addScholar": "إضافة باحث",
+  "addScholarTitle": "إضافة باحث",
+  "editScholarTitle": "تعديل الباحث",
+  "displayNameField": "الاسم الظاهر",
+  "cancel": "إلغاء",
+  "save": "حفظ",
+  "delete": "حذف",
+  "confirmDeleteTitle": "حذف الجلسة؟",
+  "confirmDeleteBody": "لا يمكن التراجع عن هذا الإجراء. هل تريد إزالة هذه الجلسة الدراسية من السجل؟",
+  "wipeDataConfirmation": "هل أنت متأكد أنك تريد حذف كل البيانات؟ سيؤدي هذا إلى إزالة جميع الملفات الشخصية والجلسات والإعدادات. لا يمكن التراجع عن هذا.",
+  "wipeDataAction": "مسح كل شيء",
+  "undergraduate": "بكالوريوس",
+  "postgraduate": "دراسات عليا",
+  "doctoralCandidate": "مرشح دكتوراه",
+  "lifelongLearner": "متعلم مدى الحياة",
+  "studyMechanicsTitle": "آليات الدراسة",
+  "dailyTargetLabel": "الهدف اليومي",
+  "focusBlockLabel": "كتلة التركيز",
+  "shortBreakLabel": "استراحة قصيرة",
+  "hoursUnit": "س",
+  "minutesUnit": "د",
+  "aiChallengesTitle": "تحديات الذكاء الاصطناعي",
+  "aiChallengesSubtitle": "اختبارات ديناميكية مبنية على ملاحظات الدراسة.",
+  "groqApiKeyLabel": "مفتاح GROQ API",
+  "applyKey": "تطبيق المفتاح",
+  "apiKeySaved": "تم حفظ مفتاح API.",
+  "statusLabel": "الحالة:",
+  "statusReady": "جاهز",
+  "curriculumTitle": "المنهج",
+  "newGroup": "مجموعة جديدة",
+  "newSubject": "مادة جديدة",
+  "addSubjectGroup": "إضافة مجموعة مواد",
+  "groupName": "اسم المجموعة",
+  "create": "إنشاء",
+  "failedCreateGroup": "فشل إنشاء المجموعة: {error}",
+  "@failedCreateGroup": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "addSubject": "إضافة مادة",
+  "subjectName": "اسم المادة",
+  "group": "المجموعة",
+  "failedCreateSubject": "فشل إنشاء المادة: {error}",
+  "@failedCreateSubject": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "editGroup": "تعديل المجموعة",
+  "deleteGroupTitle": "حذف المجموعة؟",
+  "deleteGroupPrompt": "حذف \"{name}\" وإلغاء تجميع موادها؟",
+  "@deleteGroupPrompt": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "editSubject": "تعديل المادة",
+  "deleteSubjectTitle": "حذف المادة؟",
+  "deleteSubjectPrompt": "حذف \"{name}\"؟",
+  "@deleteSubjectPrompt": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "select": "اختيار",
+  "editGroupMenu": "تعديل المجموعة",
+  "deleteGroupMenu": "حذف المجموعة",
+  "noSubjectsFound": "لا توجد مواد",
+  "noSubjectsCreateHint": "أنشئ مجموعة ثم أضف أول مادة.",
+  "noSubjectsAddHint": "أضف مادة إلى هذه المجموعة لبدء التتبع.",
+  "studySubject": "مادة دراسية",
+  "sessionsLabel": "الجلسات",
+  "editSubjectMenu": "تعديل المادة",
+  "deleteSubjectMenu": "حذف المادة",
+  "dataManagementTitle": "إدارة البيانات",
+  "exportData": "تصدير البيانات",
+  "resetProgress": "إعادة تعيين التقدم",
+  "ambienceTitle": "الأجواء",
+  "library": "المكتبة",
+  "forest": "الغابة",
+  "focusAudioTitle": "صوت التركيز",
+  "lofiBeatsStream": "بث موسيقى لوفاي",
+  "volume": "الصوت",
+  "navDashboard": "لوحة التحكم",
+  "navSessions": "الجلسات",
+  "navAnalytics": "التحليلات",
+  "navAchievements": "الإنجازات",
+  "navSettings": "الإعدادات",
+  "noMediaPlaying": "لا يوجد تشغيل صوتي",
+  "tooltipMinimizePlayer": "تصغير المشغل",
+  "tooltipHidePlayer": "إخفاء المشغل",
+  "tooltipFocusAudio": "صوت التركيز"
+  ,"dashboardLoadError": "تعذر تحميل بيانات لوحة التحكم"
+  ,"dashboardScholarFallbackName": "باحث"
+  ,"dashboardHello": "مرحباً، {name}"
+  ,"@dashboardHello": {"placeholders": {"name": {}}}
+  ,"dashboardLevelLine": "المستوى {level} {rank} · متبقي {xp} نقطة خبرة للمستوى التالي (حوالي {sessions} جلسات / ما يعادل {minutes} دقيقة تركيز)."
+  ,"@dashboardLevelLine": {"placeholders": {"level": {}, "rank": {}, "xp": {}, "sessions": {}, "minutes": {}}}
+  ,"quickStartPomodoro": "بدء بومودورو سريع"
+  ,"quickStartLongSession": "بدء جلسة طويلة سريعة"
+  ,"dashboardMissionRefreshAi": "تم جلب مهام الذكاء الاصطناعي بنجاح."
+  ,"dashboardMissionRefreshFallback": "تم تحديث المهام بالاعتماد المحلي البديل."
+  ,"wellbeingFlowTitle": "حالة التدفق"
+  ,"wellbeingFlowSubtitle": "أداء مثالي"
+  ,"wellbeingProudTitle": "الباحث المثابر"
+  ,"wellbeingProudSubtitle": "سلسلة ثابتة"
+  ,"wellbeingBurnoutTitle": "تحذير إرهاق"
+  ,"wellbeingBurnoutSubtitle": "يوصى بالراحة"
+  ,"wellbeingIdleTitle": "تذكير لطيف"
+  ,"wellbeingIdleSubtitle": "خامل"
+  ,"dailyIntelTitle": "مؤشرات اليوم"
+  ,"dailyIntelSubtitle": "مراجعة العبء الذهني لليوم."
+  ,"dailyIntelDeepWork": "العمل العميق"
+  ,"dailyIntelFocusScore": "درجة التركيز"
+  ,"dailyIntelStreak": "السلسلة"
+  ,"daysLabel": "أيام"
+  ,"dailyObjectiveTitle": "الهدف الحالي"
+  ,"completedLabel": "مكتمل"
+  ,"goalLabel": "الهدف"
+  ,"activeMissionBadge": "المهمة النشطة"
+  ,"activeMissionEta": "الوقت المتوقع: 45 دقيقة"
+  ,"activeMissionRefreshTooltip": "تحديث المهمة"
+  ,"progressLabel": "التقدم"
+  ,"consistencyGridTitle": "شبكة الاستمرارية"
+  ,"consistencyLast14Days": "آخر 14 يوماً"
+  ,"lessLabel": "أقل"
+  ,"moreLabel": "أكثر"
+  ,"historicalContextTitle": "أنا مقابل نفسي السابقة"
+  ,"historicalThisWeek": "هذا الأسبوع"
+  ,"historicalDeepWorkVolume": "حجم العمل العميق"
+  ,"historicalLastWeek": "الأسبوع الماضي"
+  ,"historicalAverageFocusSession": "متوسط جلسة التركيز"
+  ,"historicalCompletionRate": "معدل الإنجاز"
+  ,"weekdayMonShort": "ن"
+  ,"weekdayTueShort": "ث"
+  ,"weekdayWedShort": "ر"
+  ,"weekdayThuShort": "خ"
+  ,"weekdayFriShort": "ج"
+  ,"weekdaySatShort": "س"
+  ,"weekdaySunShort": "ح"
+  ,"sessionsSubtitle": "جلسات الدراسة"
+  ,"logManually": "تسجيل يدوي"
+  ,"filters": "الفلاتر"
+  ,"filtersActive": "الفلاتر (مفعلة)"
+  ,"historyFiltersTitle": "فلاتر السجل"
+  ,"close": "إغلاق"
+  ,"timerTab": "المؤقت"
+  ,"stopwatchTab": "ساعة الإيقاف"
+  ,"historyTab": "السجل"
+  ,"subjectsGroupsTab": "المواد والمجموعات"
+  ,"sessionQuickStartStarted": "تم بدء {mode}."
+  ,"@sessionQuickStartStarted": {"placeholders": {"mode": {}}}
+  ,"sessionModePomodoro": "بومودورو"
+  ,"sessionModeLongSession": "جلسة طويلة"
+  ,"sessionModeManual": "تسجيل يدوي"
+  ,"sessionsLoadError": "تعذر تحميل الجلسات"
+  ,"noSessionsLogged": "لا توجد جلسات مسجلة بعد"
+  ,"minutesShortValue": "{minutes}د"
+  ,"@minutesShortValue": {"placeholders": {"minutes": {}}}
+  ,"searchHistory": "ابحث في السجل"
+  ,"subjectsError": "خطأ في المواد"
+  ,"subjectLabel": "المادة"
+  ,"allSubjects": "كل المواد"
+  ,"modeLabel": "الوضع"
+  ,"allModes": "كل الأوضاع"
+  ,"filtersFrom": "من {value}"
+  ,"@filtersFrom": {"placeholders": {"value": {}}}
+  ,"filtersTo": "إلى {value}"
+  ,"@filtersTo": {"placeholders": {"value": {}}}
+  ,"clear": "مسح"
+  ,"anyLabel": "أي"
+  ,"logSessionManuallyTitle": "تسجيل جلسة يدوياً"
+  ,"subjectOptional": "المادة (اختياري)"
+  ,"generalStudy": "دراسة عامة"
+  ,"topicLabel": "الموضوع"
+  ,"moodLabel": "الحالة"
+  ,"moodFocused": "مركز"
+  ,"moodProductive": "منتج"
+  ,"moodCalm": "هادئ"
+  ,"moodTired": "متعب"
+  ,"moodStressed": "متوتر"
+  ,"moodDistracted": "مشتت"
+  ,"durationMinutesLabel": "المدة (بالدقائق)"
+  ,"enterValidDuration": "أدخل مدة صحيحة"
+  ,"notesLabel": "ملاحظات"
+  ,"saving": "جارٍ الحفظ..."
+  ,"analyticsSubtitle": "راجع قدرة التحمل الذهني ومؤشرات التركيز خلال الدورة الحالية."
+  ,"achievementsPersonalGrowth": "النمو الشخصي"
+  ,"achievementsTabAwards": "الأوسمة"
+  ,"achievementsTabAiMissions": "مهام الذكاء الاصطناعي"
+  ,"achievementsTakenAwards": "الأوسمة المكتسبة: {count}"
+  ,"@achievementsTakenAwards": {"placeholders": {"count": {}}}
+  ,"achievementsLevelRank": "المستوى {level} {rank}"
+  ,"@achievementsLevelRank": {"placeholders": {"level": {}, "rank": {}}}
+  ,"achievementsUnlocked": "{unlocked}/{total} مفتوح"
+  ,"@achievementsUnlocked": {"placeholders": {"unlocked": {}, "total": {}}}
+  ,"achievementsXpProgress": "{current} / {total} نقطة خبرة في هذا المستوى ({toGo} متبقي)"
+  ,"@achievementsXpProgress": {"placeholders": {"current": {}, "total": {}, "toGo": {}}}
+  ,"achievementsFilterTaken": "الأوسمة المكتسبة"
+  ,"achievementsFilterDaily": "يومي"
+  ,"achievementsFilterWeekly": "أسبوعي"
+  ,"achievementsFilterMonthly": "شهري"
+  ,"achievementsFilterTiers": "الرتب"
+  ,"achievementsProgress": "التقدم"
+  ,"achievementsRankMaster": "خبير"
+  ,"achievementsRankScholar": "باحث"
+  ,"achievementsRankAdept": "متقدم"
+  ,"achievementsRankLearner": "متعلم"
+  ,"achievementsRankNovice": "مبتدئ"
+  ,"achievementsCurrentMissions": "المهام الحالية"
+  ,"achievementsRefreshSurprise": "تحديث مهمة مفاجئة"
+  ,"achievementsGroqDetected": "تم اكتشاف مفتاح Groq. ستستخدم المهام توليد الذكاء الاصطناعي مع بديل محلي."
+  ,"achievementsNoGroq": "لم يتم العثور على مفتاح Groq. يتم توليد المهام محلياً؛ يمكنك إضافة أو استبدال المفتاح من الإعدادات في أي وقت."
+  ,"achievementsNoActiveMissions": "لا توجد مهام نشطة. اضغط تحديث لتوليد مهام جديدة."
+  ,"achievementsCompletedChallenges": "التحديات المكتملة"
+  ,"achievementsNoCompletedMissions": "لا توجد مهام مكتملة بعد."
+  ,"achievementsMissionRefreshed": "تم تحديث مهمة {tier}."
+  ,"@achievementsMissionRefreshed": {"placeholders": {"tier": {}}}
+  ,"achievementsRefreshThisMission": "تحديث هذه المهمة"
+  ,"achievementsReward": "المكافأة: {reward}"
+  ,"@achievementsReward": {"placeholders": {"reward": {}}}
+  ,"achievementsTierDaily": "يومي"
+  ,"achievementsTierWeekly": "أسبوعي"
+  ,"achievementsTierMonthly": "شهري"
+  ,"achievementsTierSurprise": "مفاجئ"
+  ,"achievementsDifficultyEasy": "سهل"
+  ,"achievementsDifficultyMedium": "متوسط"
+  ,"achievementsDifficultyHard": "صعب"
+  ,"achievementsDifficultyExtreme": "قاسٍ"
+  ,"achievementsMetricSessions": "جلسات"
+  ,"achievementsMetricMinutes": "دقائق"
+  ,"achievementsMetricStreak": "سلسلة"
+  ,"achievementsMetricSubjects": "مواد"
+  ,"achievementsMetricPomodoros": "بومودورو"
+  ,"awardTitleDailyStarter": "البداية"
+  ,"awardDescDailyStarter": "أكمل أول جلسة لك اليوم"
+  ,"awardTitleDeepWorkDaily": "عمل عميق"
+  ,"awardDescDeepWorkDaily": "ادرس لمدة 60 دقيقة اليوم"
+  ,"awardTitleSprintDaily": "اندفاعة"
+  ,"awardDescSprintDaily": "ادرس لمدة ساعتين اليوم"
+  ,"awardTitlePomo5Daily": "بومو-5"
+  ,"awardDescPomo5Daily": "أكمل 5 جلسات بومودورو اليوم"
+  ,"awardTitleMidnightOil": "زيت منتصف الليل"
+  ,"awardDescMidnightOil": "ادرس بين 12 صباحاً و3 صباحاً"
+  ,"awardTitleEarlyRiser": "استيقاظ مبكر"
+  ,"awardDescEarlyRiser": "ابدأ جلسة قبل 7 صباحاً"
+  ,"awardTitleSubjectExplorer": "مستكشف المواد"
+  ,"awardDescSubjectExplorer": "ادرس مادتين مختلفتين اليوم"
+  ,"awardTitleNoZeroDay": "لا يوم صفري"
+  ,"awardDescNoZeroDay": "سجل دقيقة دراسة واحدة على الأقل"
+  ,"awardTitleTaskFinisher": "منهي المهام"
+  ,"awardDescTaskFinisher": "أكمل كل المهام في جلسة واحدة"
+  ,"awardTitlePerfectWeek": "أسبوع مثالي"
+  ,"awardDescPerfectWeek": "ادرس ساعتين أو أكثر يومياً لمدة أسبوع"
+  ,"awardTitleWeekendWarrior": "مقاتل نهاية الأسبوع"
+  ,"awardDescWeekendWarrior": "ادرس يومي الخميس والجمعة"
+  ,"awardTitleTimeInvestorWeekly": "مستثمر الوقت"
+  ,"awardDescTimeInvestorWeekly": "ادرس 10 ساعات أو أكثر هذا الأسبوع"
+  ,"awardTitleMonthlyMaster": "سيد الشهر"
+  ,"awardDescMonthlyMaster": "25 يوماً نشطاً في شهر واحد"
+  ,"awardTitleFortyHourClub": "نادي الأربعين ساعة"
+  ,"awardDescFortyHourClub": "40 ساعة أو أكثر في شهر واحد"
+  ,"awardTitleSessionsBronze": "باحث برونزي"
+  ,"awardDescSessionsBronze": "ادرس 100 ساعة إجمالية"
+  ,"awardTitleSessionsSilver": "باحث فضي"
+  ,"awardDescSessionsSilver": "ادرس 300 ساعة إجمالية"
+  ,"awardTitleSessionsGold": "باحث ذهبي"
+  ,"awardDescSessionsGold": "ادرس 500 ساعة إجمالية"
+  ,"awardTitleSessionsLegend": "باحث أسطوري"
+  ,"awardDescSessionsLegend": "ادرس 1000 ساعة إجمالية"
+  ,"awardTitleHoursBronze": "إنجاز 100 ساعة"
+  ,"awardDescHoursBronze": "ادرس 100 ساعة إجمالية"
+  ,"awardTitleStreakWeek": "إيقاع ثابت"
+  ,"awardDescStreakWeek": "سلسلة دراسة 7 أيام مع أيام ساعتين+"
+  ,"awardTitlePhoenix": "العنقاء"
+  ,"awardDescPhoenix": "استأنف الدراسة بعد انقطاع 3 أيام أو أكثر"
+  ,"awardTitleTripleThreat": "التهديد الثلاثي"
+  ,"awardDescTripleThreat": "جلسة + بومودورو + ساعة تركيز في يوم واحد"
+  ,"awardTitleOverkill": "إفراط"
+  ,"awardDescOverkill": "ادرس 5 ساعات أو أكثر في يوم واحد"
+  ,"apply": "تطبيق"
+  ,"sessionCustomOverlaySaved": "تم حفظ صورة التراكب المخصصة في {path}"
+  ,"@sessionCustomOverlaySaved": {"placeholders": {"path": {}}}
+  ,"sessionOverlayHueTitle": "درجة لون التراكب"
+  ,"sessionHueValue": "الدرجة: {value}"
+  ,"@sessionHueValue": {"placeholders": {"value": {}}}
+  ,"sessionFullscreen": "ملء الشاشة"
+  ,"sessionExitFullscreen": "الخروج من ملء الشاشة"
+  ,"sessionFocusedMinutes": "{minutes} دقيقة تركيز"
+  ,"@sessionFocusedMinutes": {"placeholders": {"minutes": {}}}
+  ,"sessionFocusBreakLine": "{focus}د تركيز · {breakMinutes}د استراحة"
+  ,"@sessionFocusBreakLine": {"placeholders": {"focus": {}, "breakMinutes": {}}}
+  ,"sessionContinuousFocusMode": "وضع التركيز المستمر"
+  ,"sessionAtmosphere": "الأجواء"
+  ,"sessionAtmosphereCityTwilight": "شفق المدينة"
+  ,"sessionAtmosphereCozyCafe": "مقهى دافئ"
+  ,"sessionAtmosphereCustom": "مخصص"
+  ,"sessionAtmosphereOverlay": "تراكب"
+  ,"sessionHideDetails": "إخفاء تفاصيل الجلسة"
+  ,"sessionShowDetails": "تفاصيل الجلسة"
+  ,"sessionStatusReady": "جاهز"
+  ,"sessionStatusFocusing": "تركيز"
+  ,"sessionStatusBreakTime": "وقت الاستراحة"
+  ,"sessionStatusPaused": "متوقف مؤقتاً"
+  ,"sessionStart": "بدء الجلسة"
+  ,"sessionSkipBreak": "تخطي الاستراحة"
+  ,"sessionStopAndSave": "إيقاف وحفظ"
+  ,"sessionPause": "إيقاف مؤقت"
+  ,"sessionResume": "استئناف"
+  ,"stopwatchTitle": "ساعة الإيقاف"
+  ,"stopwatchStart": "بدء"
+  ,"stopwatchLap": "لفة"
+  ,"stopwatchReset": "إعادة تعيين"
+  ,"stopwatchLapNumber": "لفة {number}"
+  ,"@stopwatchLapNumber": {"placeholders": {"number": {}}}
+  ,"analyticsStatTotalTime": "إجمالي الوقت"
+  ,"analyticsStatDailyAvg": "متوسط يومي"
+  ,"analyticsStatPeakSession": "أفضل جلسة"
+  ,"analyticsStatPeakHour": "أفضل ساعة"
+  ,"analyticsAm": "ص"
+  ,"analyticsPm": "م"
+  ,"analyticsDailyTrendTitle": "الاتجاه اليومي"
+  ,"analyticsSessionRatioTitle": "نسبة الجلسة"
+  ,"analyticsSessionRatioSubtitle": "توازن مثالي بين التركيز والراحة."
+  ,"analyticsFocusRatio": "تركيز ({value}%)"
+  ,"@analyticsFocusRatio": {"placeholders": {"value": {}}}
+  ,"analyticsBreakRatio": "استراحة ({value}%)"
+  ,"@analyticsBreakRatio": {"placeholders": {"value": {}}}
+  ,"analyticsSubjectBreakdownTitle": "توزيع المواد"
+  ,"analyticsNoSubjectBreakdown": "لا توجد وسوم مضافة للجلسات الأخيرة."
+  ,"analyticsSubjectBreakdownLabel": "توزيع المواد"
+  ,"analyticsStateDistributionTitle": "توزيع الحالة"
+  ,"analyticsNoMoodData": "لا توجد بيانات حالة متاحة."
+  ,"analyticsMoodDeepFlow": "تدفق عميق"
+  ,"analyticsMoodResistance": "مقاومة"
+  ,"analyticsMoodFatigue": "إرهاق"
+  ,"analyticsRecentOutputTitle": "المخرجات الأخيرة"
+  ,"analyticsViewAll": "عرض الكل"
+  ,"analyticsNoRecentOutput": "لا توجد مخرجات حديثة."
+  ,"analyticsCompletedPrefix": "مكتمل"
+  ,"analyticsPeakStudyHoursTitle": "ساعات الدراسة الأعلى"
+  ,"analyticsHeatmapTitle": "خريطة الاستمرارية السنوية"
+  ,"analyticsNoSessionsYet": "لا توجد جلسات بعد"
+  ,"analyticsStartDay": "يوم البداية: {date}"
+  ,"@analyticsStartDay": {"placeholders": {"date": {}}}
+
+  ,"statusHubStreakRunway": "مسار السلسلة"
+  ,"statusHubTodaySignal": "إشارة اليوم"
+  ,"statusHubDaysHot": "أيام متتالية"
+  ,"statusHubNextCrest": "القمة التالية"
+  ,"statusHubDaysToCrest": "{count, plural, zero{لا يتبقى شيء} one{يتبقى يوم واحد} two{يتبقى يومان} few{يتبقى {count} أيام} many{يتبقى {count} يومًا} other{يتبقى {count} يومًا}}"
+  ,"@statusHubDaysToCrest": {"placeholders": {"count": {"type": "int"}}}
+  ,"statusHubPersonalBestFull": "أفضل سلسلة لك · {days} يومًا"
+  ,"@statusHubPersonalBestFull": {"placeholders": {"days": {"type": "int"}}}
+  ,"statusHubLadderClearedTitle": "اكتمال السلم"
+  ,"statusHubPersonalBestInline": "أفضل سلسلة · {days} يومًا"
+  ,"@statusHubPersonalBestInline": {"placeholders": {"days": {"type": "int"}}}
+
+  ,"statusHubTierColdStart": "بداية هادئة"
+  ,"statusHubTierFirstSpark": "أول شرارة"
+  ,"statusHubTierKindlingClimb": "صعود الزند"
+  ,"statusHubTierScholarPulse": "نبض المثابر"
+  ,"statusHubTierDeepRhythm": "إيقاع عميق"
+  ,"statusHubTierMarathonMind": "عقل الماراثون"
+  ,"statusHubTierHallOfLegends": "قاعة الأساطير"
+
+  ,"statusHubCkptFlavor3": "قمة الزند"
+  ,"statusHubCkptFlavor7": "نبض العلم والمثابرة"
+  ,"statusHubCkptFlavor14": "قمة الإيقاع"
+  ,"statusHubCkptFlavor30": "صهر الشهر"
+  ,"statusHubCkptFlavor90": "أسطورة الموسم"
+  ,"statusHubCkptFlavorGeneric": "علامة تقدّم"
+
+  ,"statusHubChasePeakRunway": "أفضل سلسلة سجّلتها: {days} يومًا — خُذْ راحتك ثم افتَح تحديًا جديدًا."
+  ,"@statusHubChasePeakRunway": {"placeholders": {"days": {"type": "int"}}}
+  ,"statusHubChaseEncore": "قطعتَ كل القمم على السلم — اجعل الهدف التالي {goal}+ يومًا."
+  ,"@statusHubChaseEncore": {"placeholders": {"goal": {"type": "int"}}}
+  ,"statusHubChaseStartToday": "ادرس اليوم — أول قمة لك هي «{flavorName}» بعد {days} أيام متتالية."
+  ,"@statusHubChaseStartToday": {"placeholders": {"flavorName": {"type": "String"}, "days": {"type": "int"}}}
+  ,"statusHubChaseCement": "«{flavorName}» قريبة — سجّل اليوم لتثبتها."
+  ,"@statusHubChaseCement": {"placeholders": {"flavorName": {"type": "String"}}}
+  ,"statusHubChaseRemain": "{count, plural, one{يتبقى يوم واحد للوصول إلى «{flavorName}» (قمة {milestone} يومًا).} other{تفصلك {count} أيام عن «{flavorName}» (قمة {milestone} يومًا).}}"
+  ,"@statusHubChaseRemain": {"placeholders": {"count": {"type": "int"}, "flavorName": {"type": "String"}, "milestone": {"type": "int"}}}
+
+  ,"statusHubBodyFlow": "تركيز طويل اليوم — على حافة التحدي دون أن تُثقل نفسك."
+  ,"statusHubBodyProud": "بُنيت قوة الاستمرار — استمتع بالمجهود واحمِ فترات التعافي."
+  ,"statusHubBodyBurnout": "حجم عالٍ اليوم — اشرب ماء، قصّر الجولة القادمة، واحرص على النوم."
+  ,"statusHubBodyIdle": "لا يوجد عمل عميق بعد — جلسة واحدة مركّزة تُشعل وقود السلسلة."
+
+  ,"statusHubChipOptimalFocus": "تركيز مثالي"
+  ,"statusHubChipStreakCrest": "قمة السلسلة"
+  ,"statusHubChipRestGuarded": "احمِ راحتك"
+  ,"statusHubChipReadyIgnite": "جاهز للانطلاق"
+  ,"statusHubChipFlowRule": "التدفق: 120 دقيقة فأكثر اليوم"
+  ,"statusHubChipFatigueRule": "تنبيه الإرهاق: أكثر من 360 د باليوم"
+  ,"notif_prestudy_v1": "حان وقت دراسة {subject}. ابدأ كتلة تركيز."
+  ,"@notif_prestudy_v1": {"placeholders": {"subject": {}}}
+  ,"notif_prestudy_v2": "جلسة تركيز {subject} تنتظرك الآن."
+  ,"@notif_prestudy_v2": {"placeholders": {"subject": {}}}
+  ,"notif_prestudy_v3": "حافظ على الزخم مع {subject}."
+  ,"@notif_prestudy_v3": {"placeholders": {"subject": {}}}
+  ,"notif_streak_body": "احمِ سلسلة {count} يومًا. سجّل جلسة قبل منتصف الليل."
+  ,"@notif_streak_body": {"placeholders": {"count": {"type": "int"}}}
+  ,"notif_weekly_full": "{hours}س {minutes}د عبر {count} جلسات. أكثر مادة: {subject}."
+  ,"@notif_weekly_full": {"placeholders": {"hours": {"type": "int"}, "minutes": {"type": "int"}, "count": {"type": "int"}, "subject": {"type": "String"}}}
+  ,"notif_weekly_empty": "لا توجد جلسات هذا الأسبوع. ابدأ سلسلة جديدة اليوم."
+  ,"notif_goal_behind": "أنت متأخر {hoursBehind}س عن هدفك في {goalName}. {daysLeft} أيام متبقية للحاق."
+  ,"@notif_goal_behind": {"placeholders": {"hoursBehind": {"type": "int"}, "daysLeft": {"type": "int"}, "goalName": {}}}
+  ,"notif_reengage_short": "مرّ {days} أيام. هيا لنعود للدراسة."
+  ,"@notif_reengage_short": {"placeholders": {"days": {"type": "int"}}}
+  ,"notif_reengage_long": "نحن نفتقدك! ابدأ جلسة جديدة والعد للطريق الصحيح."
+  ,"notif_settings_title": "الإشعارات"
+  ,"notif_settings_prestudy": "تذكير ما قبل الدراسة"
+  ,"notif_settings_prestudy_desc": "الإطلاق في {time} · كل يوم"
+  ,"@notif_settings_prestudy_desc": {"placeholders": {"time": {}}}
+  ,"notif_settings_streak": "حماية السلسلة"
+  ,"notif_settings_weekly": "ملخص أسبوعي"
+  ,"notif_settings_goal": "تقدم الهدف"
+  ,"notif_settings_reengage": "إعادة الاشتباك"
+  ,"notif_settings_reengage_desc": "بعد 3 أيام، في {time}"
+  ,"@notif_settings_reengage_desc": {"placeholders": {"time": {}}}
+  ,"notif_settings_quiet_title": "عدم الإزعاج"
+  ,"notif_settings_quiet_desc": "ساعات الهدوء: {start} → {end}"
+  ,"@notif_settings_quiet_desc": {"placeholders": {"start": {}, "end": {}}}
+  ,"notif_settings_quiet_start": "بداية وقت الهدوء"
+  ,"notif_settings_quiet_end": "نهاية وقت الهدوء"
+  ,"notif_settings_quiet_start_desc": "لن تصلك إشعارات غير عاجلة بعد هذا الوقت"
+  ,"notif_settings_quiet_end_desc": "ستستأنف الإشعارات بعد هذا الوقت"
+  ,"notif_permission_title": "تفعيل الإشعارات؟"
+  ,"notif_permission_body": "تذكيرات الدراسة تساعدك على البقاء متسقًا. سنرسل لك تحديثات في الوقت المناسب حول تقدمك والسلاسل."
+  ,"notif_permission_enable": "تفعيل"
+  ,"notif_permission_later": "لاحقًا"
+  ,"notif_denied_hint": "الإشعارات معطلة. افتح إعدادات الجهاز لتفعيلها."
+  ,"notif_settings_streak_desc": "يُحدَّد وقت التذكير تلقائيًا من نمط سلسلتك (مساءً)."
+  ,"notif_settings_goal_desc": "يُحدَّد وقت التذكير تلقائيًا من تقدم هدفك الأسبوعي."
+  ,"notif_settings_weekly_desc": "كل {day} الساعة {time}"
+  ,"@notif_settings_weekly_desc": {"placeholders": {"day": {}, "time": {}}}
+  ,"notif_time_fire_at": "التنبيه عند"
+  ,"notif_day_fire_at": "التنبيه يوم"
+  ,"monday": "الاثنين"
+  ,"tuesday": "الثلاثاء"
+  ,"wednesday": "الأربعاء"
+  ,"thursday": "الخميس"
+  ,"friday": "الجمعة"
+  ,"saturday": "السبت"
+  ,"sunday": "الأحد"
+  ,"notif_time_weekly_summary": "كل أحد في"
+  ,"ai_coach_title": "مدربك الذكي"
+  ,"ai_coach_connect": "الاتصال بالذكاء الاصطناعي"
+  ,"ai_debrief_loading": "التفكير في جلستك…"
+  ,"ai_challenge_title": "تحدي اليوم"
+  ,"ai_narrative_title": "ملخص هذا الأسبوع"
+  ,"ai_narrative_button": "إنشاء تقرير"
+  ,"ai_narrative_loading": "جاري إنشاء تقريرك…"
+  ,"ai_difficulty_title": "تحليل المواد"
+  ,"ai_difficulty_button": "حلل مواديّ"
+  ,"ai_difficulty_not_enough": "تحتاج إلى المزيد من الجلسات للتحليل. استمر في الدراسة!"
+  ,"ai_difficulty_error": "تعذّر تحليل المواد الآن. حاول لاحقًا."
+  ,"ai_settings_title": "ميزات الذكاء الاصطناعي"
+  ,"ai_settings_subtitle": "اربط Groq مرة واحدة، ثم فعّل الميزات التي تريدها."
+  ,"ai_challenges_master_label": "التحديات (عام)"
+  ,"ai_settings_toggles_heading": "ذكاء اصطناعي لكل ميزة"
+  ,"ai_settings_load_error": "تعذّر تحميل إعدادات ميزات الذكاء الاصطناعي."
+  ,"ai_settings_api_key": "مفتاح Groq API"
+  ,"ai_settings_api_key_hint": "الصق مفتاح Groq API الخاص بك هنا"
+  ,"ai_settings_connected": "متصل ✓"
+  ,"ai_settings_show_key": "عرض"
+  ,"ai_settings_hide_key": "إخفاء"
+  ,"ai_settings_get_key": "احصل على مفتاح Groq API مجاني"
+  ,"ai_settings_coach": "المدرب الذكي"
+  ,"ai_settings_coach_desc": "تشجيع شخصي يومي"
+  ,"ai_settings_challenges": "التحديات الذكية"
+  ,"ai_settings_challenges_desc": "اقتراحات دراسة معدلة حسب الصعوبة"
+  ,"ai_settings_debrief": "تقييم الجلسة"
+  ,"ai_settings_debrief_desc": "ملاحظات الذكاء الاصطناعي بعد كل جلسة دراسة"
+  ,"ai_settings_narrative": "السرد الأسبوعي"
+  ,"ai_settings_narrative_desc": "ملخص أسبوع الدراسة الخاص بك"
+  ,"ai_settings_difficulty": "تحليل المواد"
+  ,"ai_settings_difficulty_desc": "حدد أقوى المواد وأضعفها"
+  ,"ai_settings_surprise": "مهام مفاجئة"
+  ,"ai_settings_surprise_desc": "إشعارات عشوائية لمهام تم إنشاؤها بالذكاء الاصطناعي"
+  ,"ai_settings_surprise_interval": "تحقق كل {hours} ساعة"
+  ,"@ai_settings_surprise_interval": {"placeholders": {"hours": {}}}
+  ,"ai_debrief_tap_to_dismiss": "اضغط للإغلاق"
+  ,"ai_copy_narrative_snackbar": "تم نسخ الملخص الأسبوعي إلى الحافظة"
+  ,"notifStreakBody": "سلسلتك {streak} أيام متتالية. افتح التطبيق للحفاظ عليها."
+  ,"@notifStreakBody": {"placeholders": {"streak": {}}}
+  ,"notifGoalBehind": "متأخر حوالي {hours} ساعة عن هدفك الأسبوعي لـ {name}. بقي {days} يوم/أيام للتعويض."
+  ,"@notifGoalBehind": {"placeholders": {"hours": {}, "days": {}, "name": {}}}
+  ,"notifReengageLong": "مر وقت طويل — حتى جلسة قصيرة اليوم تساعد على استعادة الزخم."
+  ,"notifReengageShort": "لا جلسات منذ {days} يوم/أيام. اضغط لتسجيل جلسة سريعة."
+  ,"@notifReengageShort": {"placeholders": {"days": {}}}
+  ,"notifPrestudyV1": "تذكير قبل الدراسة: {subject}. راجع خطتك عندما تكون جاهزًا."
+  ,"@notifPrestudyV1": {"placeholders": {"subject": {}}}
+  ,"notifPrestudyV2": "الكتلة التالية: {subject}. ضع هدفًا صغيرًا قبل البدء."
+  ,"@notifPrestudyV2": {"placeholders": {"subject": {}}}
+  ,"notifPrestudyV3": "استعد لـ {subject} — افتح المؤقت عندما تكون جاهزًا."
+  ,"@notifPrestudyV3": {"placeholders": {"subject": {}}}
+  ,"notifWeeklyEmpty": "لا جلسات مسجلة هذا الأسبوع بعد."
+  ,"notifWeeklyFull": "حتى الآن هذا الأسبوع: {hours}س {minutes}د عبر {sessionCount} جلسة. أبرز مادة: {subject}."
+  ,"@notifWeeklyFull": {"placeholders": {"hours": {}, "minutes": {}, "sessionCount": {}, "subject": {}}}
+  ,"dashboardDailyProgress": "التقدم اليومي"
+  ,"dashboardLast7Days": "آخر 7 أيام"
+  ,"dashboardToday": "اليوم"
+  ,"dashboardStreak": "السلسلة"
+  ,"dashboardAllTime": "إجمالي المدة"
+  ,"dashboardDaysToNext": "الأيام حتى الهدف التالي"
+}

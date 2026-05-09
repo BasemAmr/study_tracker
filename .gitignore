@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+bin/
+src-tauri/target/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Tauri
+src-tauri/gen/
+src-tauri/target_cli_build/
+
+# Flutter / Dart (Subdirectory)
+study_tracker_flutter/build/
+study_tracker_flutter/.dart_tool/
+study_tracker_flutter/.flutter-plugins
+study_tracker_flutter/.flutter-plugins-dependencies
+study_tracker_flutter/.packages
+study_tracker_flutter/.pub-cache/
+study_tracker_flutter/.pub/
+study_tracker_flutter/*.g.dart
+study_tracker_flutter/*.freezed.dart
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tsbuildinfo
+.eslintcache
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Local Env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temp/Draft files
+*.txt
+*.log

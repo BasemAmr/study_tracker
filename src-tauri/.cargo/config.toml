@@ -1,0 +1,24 @@
+# Cargo configuration for Windows build stability
+# Fixes "process cannot access the file because it is being used by another process" (os error 32)
+
+[profile.dev]
+incremental = false
+codegen-units = 1
+
+[profile.dev.build-override]
+incremental = false
+codegen-units = 1
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+opt-level = 3
+strip = true
+
+[profile.release.build-override]
+incremental = false
+codegen-units = 1
+
+[build]
+# Limit parallel jobs to 1 to reduce file-handle pressure on Windows
+jobs = 1
