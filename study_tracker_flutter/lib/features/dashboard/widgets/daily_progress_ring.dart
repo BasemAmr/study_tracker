@@ -206,21 +206,23 @@ class _ProgressRingPainter extends CustomPainter {
         
       canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
 
-      // Rotating Shimmer Effect (Traveling across the filled bar)
+      // Organic Shimmer Effect (No 'Hotdog' look)
       final shimmerPaint = Paint()
         ..shader = SweepGradient(
           colors: [
             Colors.white.withOpacity(0.0),
-            Colors.white.withOpacity(0.9), // Higher prominence
+            Colors.white.withOpacity(0.0),
+            Colors.white.withOpacity(0.6), // Softer glint
+            Colors.white.withOpacity(0.0),
             Colors.white.withOpacity(0.0),
           ],
-          stops: const [0.0, 0.5, 1.0],
-          // Travel from startAngle to (startAngle + sweepAngle)
+          stops: const [0.0, 0.45, 0.5, 0.55, 1.0],
           transform: GradientRotation(startAngle + (sweepAngle * shimmerValue)),
         ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
-        ..strokeWidth = strokeWidth + 3;
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3.0) // Soft edges
+        ..strokeWidth = strokeWidth + 1;
 
       canvas.save();
       final clipPath = Path()..addArc(rect, startAngle, sweepAngle);
