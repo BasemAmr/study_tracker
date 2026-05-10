@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:ui' as ui;
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/typography.dart';
 import '../../../core/widgets/app_card.dart';
@@ -27,9 +28,18 @@ class _DailyProgressRingState extends State<DailyProgressRing> with TickerProvid
     super.initState();
     _shimmerController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
-    )..repeat();
+      duration: const Duration(milliseconds: 5500),
+    );
+    
+    // Looping with ease-in-out
+    _shimmerController.repeat();
   }
+
+  // Drive value through a curved animation
+  double get _curvedShimmerValue => CurvedAnimation(
+    parent: _shimmerController,
+    curve: Curves.easeInOut,
+  ).value;
 
   @override
   void dispose() {
@@ -57,8 +67,8 @@ class _DailyProgressRingState extends State<DailyProgressRing> with TickerProvid
           const SizedBox(height: 32),
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0.0, end: targetProgress),
-            duration: const Duration(milliseconds: 3500), // Slow fill
-            curve: Curves.easeInCubic, // Slow at first, fast at finish
+            duration: const Duration(milliseconds: 2000), // Slow fill
+            curve: Curves.easeInOutCubic,
             builder: (context, progress, child) {
               final int percentage = (progress * 100).toInt();
               return SizedBox(
@@ -75,9 +85,9 @@ class _DailyProgressRingState extends State<DailyProgressRing> with TickerProvid
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFEF4444).withOpacity(0.2 * (progress > 0 ? 1 : 0)),
-                            blurRadius: 40,
-                            spreadRadius: 8,
+                            color: const Color(0xFFEF4444).withOpacity(0.15 * (progress > 0 ? 1 : 0)),
+                            blurRadius: 30,
+                            spreadRadius: 5,
                           ),
                         ],
                       ),
@@ -89,7 +99,7 @@ class _DailyProgressRingState extends State<DailyProgressRing> with TickerProvid
                           size: const Size(160, 160),
                           painter: _ProgressRingPainter(
                             progress: progress,
-                            shimmerValue: _shimmerController.value,
+                            shimmerValue: _curvedShimmerValue,
                             trackColor: const Color(0xFFFFE4E1).withOpacity(0.2),
                             progressColorStart: const Color(0xFFF59E0B),
                             progressColorEnd: const Color(0xFFEF4444),
@@ -195,39 +205,65 @@ class _ProgressRingPainter extends CustomPainter {
       // Progress arc with Gradient
       final rect = Rect.fromCircle(center: center, radius: radius);
       final progressPaint = Paint()
-        ..shader = LinearGradient(
-          colors: [progressColorStart, progressColorEnd],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+        ..shader = SweepGradient(
+          colors: [progressColorStart, progressColorEnd, progressColorStart],
+          stops: const [0.0, 0.5, 1.0],
+          transform: GradientRotation(startAngle),
         ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
         ..strokeWidth = strokeWidth;
         
-      canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
+      if (progress >= 1.0) {
+        canvas.drawCircle(center, radius, progressPaint);
+      } else {
+        canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
+      }
 
-      // Organic Shimmer Effect (No 'Hotdog' look)
-      final shimmerPaint = Paint()
-        ..shader = SweepGradient(
-          colors: [
-            Colors.white.withOpacity(0.0),
-            Colors.white.withOpacity(0.0),
-            Colors.white.withOpacity(0.6), // Softer glint
-            Colors.white.withOpacity(0.0),
-            Colors.white.withOpacity(0.0),
-          ],
-          stops: const [0.0, 0.45, 0.5, 0.55, 1.0],
-          transform: GradientRotation(startAngle + (sweepAngle * shimmerValue)),
-        ).createShader(rect)
-        ..style = PaintingStyle.stroke
-        ..strokeCap = StrokeCap.round
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3.0) // Soft edges
-        ..strokeWidth = strokeWidth + 1;
+      // specular highlight sweep ("sheen pass")
+      final sheenCenter = startAngle + sweepAngle * shimmerValue;
+      final sheenWidth = sweepAngle * 0.135;
+      final sheenStart = max(sheenCenter - sheenWidth / 2, startAngle) - 1 / radius;
+      final sheenEnd = min(sheenCenter + sheenWidth / 2, startAngle + sweepAngle) + 1 / radius;
 
-      canvas.save();
-      final clipPath = Path()..addArc(rect, startAngle, sweepAngle);
-      canvas.clipPath(clipPath);
-      canvas.drawArc(rect, startAngle, sweepAngle, false, shimmerPaint);
+      if (sheenEnd > sheenStart) {
+        double alpha = 0.92;
+        final bool isFull = progress >= 1.0;
+        if (!isFull && shimmerValue > 0.96) {
+          alpha = 0.92 * ((1.0 - shimmerValue) / 0.04).clamp(0.0, 1.0);
+        }
+
+        final tx = center.dx + radius * cos(sheenCenter);
+        final ty = center.dy + radius * sin(sheenCenter);
+        
+        // Perpendicular tangent for the gradient
+        final tangentX = -sin(sheenCenter);
+        final tangentY = cos(sheenCenter);
+        final spread = radius * sheenWidth * 0.75;
+
+        final sheenPaint = Paint()
+          ..shader = ui.Gradient.linear(
+            Offset(tx - tangentX * spread, ty - tangentY * spread),
+            Offset(tx + tangentX * spread, ty + tangentY * spread),
+            [
+              const Color(0xFFFFFCDC).withOpacity(0.0),
+              const Color(0xFFFFFCDC).withOpacity(alpha),
+              const Color(0xFFFFFCDC).withOpacity(0.0),
+            ],
+            [0.0, 0.5, 1.0],
+          )
+          ..style = PaintingStyle.stroke
+          ..strokeCap = StrokeCap.round
+          ..strokeWidth = strokeWidth;
+
+        canvas.drawArc(
+          rect,
+          sheenStart,
+          sheenEnd - sheenStart,
+          false,
+          sheenPaint,
+        );
+      }
       canvas.restore();
     }
   }

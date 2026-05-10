@@ -29,21 +29,18 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
     );
     _fillController.forward();
 
-    // Shimmer Animation
+    // Shimmer Animation (Sheen Pass)
     _shimmerController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000), // Faster, more active shimmer
+      duration: const Duration(milliseconds: 5500),
     );
-    _startShimmerLoop();
+    _shimmerController.repeat();
   }
 
-  void _startShimmerLoop() async {
-    while (mounted) {
-      await _shimmerController.forward(from: 0.0);
-      if (!mounted) return;
-      // No delay for infinite glistening feel
-    }
-  }
+  double get _curvedShimmerValue => CurvedAnimation(
+    parent: _shimmerController,
+    curve: Curves.easeInOut,
+  ).value;
 
   @override
   void didUpdateWidget(AnimatedStreakBar oldWidget) {
@@ -135,29 +132,15 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
                           ),
                         ),
                       ),
-                      // Shimmer highlight (High-Prominence Glisten)
+                      // Specular highlight sweep ("sheen pass")
                       Positioned.fill(
                         child: AnimatedBuilder(
                           animation: _shimmerController,
                           builder: (context, _) {
-                            return FractionalTranslation(
-                              translation: Offset(_shimmerController.value * 4 - 2, 0),
-                              child: Transform.rotate(
-                                angle: 0.5, // Tilted shimmer
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.white.withOpacity(0.0),
-                                        Colors.white.withOpacity(0.7), // More prominent
-                                        Colors.white.withOpacity(0.0),
-                                      ],
-                                      stops: const [0.0, 0.5, 1.0],
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                    ),
-                                  ),
-                                ),
+                            return CustomPaint(
+                              painter: _SheenPainter(
+                                shimmerValue: _curvedShimmerValue,
+                                isFull: currentProgress >= 1.0,
                               ),
                             );
                           },
@@ -172,5 +155,52 @@ class _AnimatedStreakBarState extends State<AnimatedStreakBar> with TickerProvid
         ),
       ],
     );
+  }
+}
+class _SheenPainter extends CustomPainter {
+  final double shimmerValue;
+  final bool isFull;
+
+  _SheenPainter({required this.shimmerValue, required this.isFull});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final barWidth = size.width;
+    final barHeight = size.height;
+    
+    final sheenCenter = barWidth * shimmerValue;
+    final sheenWidth = barWidth * 0.135;
+    
+    // Clamp to filled region (which is size.width in this context because of FractionallySizedBox)
+    final sheenStart = (sheenCenter - sheenWidth / 2).clamp(-1.0, barWidth + 1.0);
+    final sheenEnd = (sheenCenter + sheenWidth / 2).clamp(-1.0, barWidth + 1.0);
+
+    if (sheenEnd > sheenStart) {
+      double alpha = 0.92;
+      if (!isFull && shimmerValue > 0.96) {
+        alpha = 0.92 * ((1.0 - shimmerValue) / 0.04).clamp(0.0, 1.0);
+      }
+
+      final spread = sheenWidth / 2 * 0.75;
+      
+      final paint = Paint()
+        ..shader = LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            const Color(0xFFFFFCDC).withOpacity(0.0),
+            const Color(0xFFFFFCDC).withOpacity(alpha),
+            const Color(0xFFFFFCDC).withOpacity(0.0),
+          ],
+          stops: const [0.0, 0.5, 1.0],
+        ).createShader(Rect.fromLTRB(sheenCenter - spread, 0, sheenCenter + spread, barHeight));
+
+      canvas.drawRect(Rect.fromLTRB(sheenStart, 0, sheenEnd, barHeight), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SheenPainter oldDelegate) {
+    return oldDelegate.shimmerValue != shimmerValue || oldDelegate.isFull != isFull;
   }
 }
