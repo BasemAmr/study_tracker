@@ -195,10 +195,10 @@ class _ProgressRingPainter extends CustomPainter {
       // Progress arc with Gradient
       final rect = Rect.fromCircle(center: center, radius: radius);
       final progressPaint = Paint()
-        ..shader = SweepGradient(
-          colors: [progressColorStart, progressColorEnd, progressColorStart],
-          stops: const [0.0, 0.5, 1.0],
-          transform: GradientRotation(startAngle),
+        ..shader = LinearGradient(
+          colors: [progressColorStart, progressColorEnd],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
@@ -206,32 +206,25 @@ class _ProgressRingPainter extends CustomPainter {
         
       canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
 
-      // Rotating Shimmer Arc
+      // Rotating Shimmer Effect (High Prominence)
       final shimmerPaint = Paint()
-        ..shader = RadialGradient(
-          colors: [Colors.white.withOpacity(0.9), Colors.white.withOpacity(0.0)],
+        ..shader = SweepGradient(
+          colors: [
+            Colors.white.withOpacity(0.0),
+            Colors.white.withOpacity(0.8), // Very prominent
+            Colors.white.withOpacity(0.0),
+          ],
+          stops: const [0.0, 0.5, 1.0],
+          transform: GradientRotation(startAngle + (2 * pi * shimmerValue)),
         ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
-        ..strokeWidth = strokeWidth - 6;
+        ..strokeWidth = strokeWidth + 2;
 
-      final shimmerStartAngle = startAngle + (2 * pi * shimmerValue);
-      const shimmerSweepAngle = 0.25; // Small arc segment
-
-      // We only draw the shimmer if it's within the progress area
-      // For simplicity, we can draw it and clip it to the progress arc
       canvas.save();
-      final clipPath = Path()
-        ..addArc(rect, startAngle, sweepAngle);
-      canvas.clipPath(clipPath); // Clip to progress area
-      
-      canvas.drawArc(
-        rect,
-        shimmerStartAngle,
-        shimmerSweepAngle,
-        false,
-        shimmerPaint,
-      );
+      final clipPath = Path()..addArc(rect, startAngle, sweepAngle);
+      canvas.clipPath(clipPath);
+      canvas.drawArc(rect, startAngle, sweepAngle, false, shimmerPaint);
       canvas.restore();
     }
   }
