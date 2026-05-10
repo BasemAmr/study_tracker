@@ -57,8 +57,8 @@ class _DailyProgressRingState extends State<DailyProgressRing> with TickerProvid
           const SizedBox(height: 32),
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0.0, end: targetProgress),
-            duration: const Duration(milliseconds: 2000), // Slow fill
-            curve: Curves.easeInOutCubic,
+            duration: const Duration(milliseconds: 3500), // Slow fill
+            curve: Curves.easeInCubic, // Slow at first, fast at finish
             builder: (context, progress, child) {
               final int percentage = (progress * 100).toInt();
               return SizedBox(
@@ -75,9 +75,9 @@ class _DailyProgressRingState extends State<DailyProgressRing> with TickerProvid
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFEF4444).withOpacity(0.15 * (progress > 0 ? 1 : 0)),
-                            blurRadius: 30,
-                            spreadRadius: 5,
+                            color: const Color(0xFFEF4444).withOpacity(0.2 * (progress > 0 ? 1 : 0)),
+                            blurRadius: 40,
+                            spreadRadius: 8,
                           ),
                         ],
                       ),
@@ -206,20 +206,21 @@ class _ProgressRingPainter extends CustomPainter {
         
       canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
 
-      // Rotating Shimmer Effect (High Prominence)
+      // Rotating Shimmer Effect (Traveling across the filled bar)
       final shimmerPaint = Paint()
         ..shader = SweepGradient(
           colors: [
             Colors.white.withOpacity(0.0),
-            Colors.white.withOpacity(0.8), // Very prominent
+            Colors.white.withOpacity(0.9), // Higher prominence
             Colors.white.withOpacity(0.0),
           ],
           stops: const [0.0, 0.5, 1.0],
-          transform: GradientRotation(startAngle + (2 * pi * shimmerValue)),
+          // Travel from startAngle to (startAngle + sweepAngle)
+          transform: GradientRotation(startAngle + (sweepAngle * shimmerValue)),
         ).createShader(rect)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
-        ..strokeWidth = strokeWidth + 2;
+        ..strokeWidth = strokeWidth + 3;
 
       canvas.save();
       final clipPath = Path()..addArc(rect, startAngle, sweepAngle);

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { tweened } from 'svelte/motion';
-  import { cubicOut } from 'svelte/easing';
+  import { cubicIn } from 'svelte/easing';
 
   let {
     value = 0,
@@ -17,21 +17,19 @@
     label?: string;
   } = $props();
 
-  // Motion: Start from 0 and fill slowly to value
+  // Motion: Slow at first, fast at finish (Ease-In)
   const animatedValue = tweened(0, {
-    duration: 3000,
-    easing: cubicOut
+    duration: 3500,
+    easing: cubicIn
   });
 
   onMount(() => {
-    // Force reset to 0 before filling to ensure the "fill from start" effect on every reload
     animatedValue.set(0, { duration: 0 });
     setTimeout(() => {
       animatedValue.set(value);
-    }, 100);
+    }, 150);
   });
 
-  // Keep in sync if value changes later
   $effect(() => {
     animatedValue.set(value);
   });
@@ -42,24 +40,15 @@
   const offset = $derived(circumference * (1 - percentage));
   
   const gradientId = `ring-gradient-${Math.random().toString(36).substring(2, 9)}`;
-  const shimmerId = `shimmer-gradient-${Math.random().toString(36).substring(2, 9)}`;
 </script>
 
 <div class="inline-flex flex-col items-center gap-2">
   <div class="relative">
-    <svg width={size} height={size} class="-rotate-90 drop-shadow-xl overflow-visible">
+    <svg width={size} height={size} class="-rotate-90 drop-shadow-2xl overflow-visible">
       <defs>
-        <!-- Main Progress Gradient -->
         <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#F59E0B" />
           <stop offset="100%" stop-color="#EF4444" />
-        </linearGradient>
-
-        <!-- Shimmer Moving Gradient -->
-        <linearGradient id={shimmerId} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="rgba(255, 255, 255, 0)" />
-          <stop offset="50%" stop-color="rgba(255, 255, 255, 0.8)" />
-          <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
         </linearGradient>
       </defs>
 
@@ -88,51 +77,59 @@
         stroke-linecap="round"
       />
 
-      <!-- Shimmer Layer (Animated via CSS Background) -->
+      <!-- Shimmer "Traveler" -->
+      <!-- We use a small dash that travels from 0 to the current progress point -->
       <circle
         cx={size / 2}
         cy={size / 2}
         r={radius}
         fill="none"
-        stroke="url(#{shimmerId})"
-        class="shimmer-ring"
-        stroke-width={strokeWidth + 1}
-        stroke-dasharray={circumference}
-        stroke-dashoffset={offset}
+        stroke="white"
+        class="shimmer-traveler"
+        stroke-width={strokeWidth - 1}
+        stroke-dasharray={`${circumference * 0.15} ${circumference}`}
         stroke-linecap="round"
-        style={`visibility: ${percentage > 0.05 ? 'visible' : 'hidden'};`}
+        style={`--circumference: ${circumference}; --offset: ${offset}; visibility: ${percentage > 0.05 ? 'visible' : 'hidden'};`}
       />
     </svg>
     
     <!-- High-Intensity Inner Glow -->
     <div class="absolute inset-0 pointer-events-none rounded-full flex items-center justify-center">
        <div 
-         class="w-full h-full rounded-full animate-pulse opacity-60" 
-         style="background: radial-gradient(circle, rgba(239,68,68,0.25) 0%, transparent 80%); filter: blur(12px);"
+         class="w-full h-full rounded-full animate-pulse opacity-50" 
+         style="background: radial-gradient(circle, rgba(239,68,68,0.3) 0%, transparent 85%); filter: blur(14px);"
        ></div>
     </div>
   </div>
   
   {#if label}
-    <span class="text-[10px] font-bold text-orange-600/80 tracking-[0.1em] uppercase">{label}</span>
+    <span class="text-[10px] font-black text-orange-600/90 tracking-[0.15em] uppercase">{label}</span>
   {/if}
 </div>
 
 <style>
   .progress-ring-stroke {
-    filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.5));
-    transition: none; /* Handled by Svelte motion */
+    filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.4));
   }
 
-  .shimmer-ring {
-    animation: shimmer-move 3s infinite linear;
-    filter: blur(1px) brightness(1.2);
+  .shimmer-traveler {
+    opacity: 0.8;
+    filter: blur(1px);
+    animation: travel 2.5s infinite ease-in-out;
   }
 
-  @keyframes shimmer-move {
-    0% { opacity: 0; stroke-width: 0; }
-    10% { opacity: 1; stroke-width: inherit; }
-    90% { opacity: 1; stroke-width: inherit; }
-    100% { opacity: 0; stroke-width: 0; }
+  @keyframes travel {
+    0% {
+      stroke-dashoffset: var(--circumference);
+      opacity: 0;
+    }
+    10%, 90% {
+      opacity: 1;
+    }
+    100% {
+      /* Ends at the current progress offset */
+      stroke-dashoffset: var(--offset);
+      opacity: 0;
+    }
   }
 </style>
